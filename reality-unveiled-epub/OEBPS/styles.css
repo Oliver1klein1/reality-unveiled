@@ -1,0 +1,249 @@
+/* EPUB Styles for Reality Unveiled */
+
+body {
+    font-family: Georgia, serif;
+    line-height: 1.6;
+    margin: 1em;
+    color: #333;
+    background-color: #fff;
+}
+
+h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 1em;
+    color: #2a4365;
+    page-break-before: always;
+}
+
+h1:first-child {
+    page-break-before: avoid;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    color: #2a4365;
+    border-bottom: 2px solid #7f9cf5;
+    padding-bottom: 0.3em;
+}
+
+h3 {
+    font-size: 1.3em;
+    margin-top: 1.3em;
+    margin-bottom: 0.6em;
+    color: #2a4365;
+}
+
+h4 {
+    font-size: 1.1em;
+    margin-top: 1.1em;
+    margin-bottom: 0.5em;
+    color: #2a4365;
+}
+
+p {
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+.cover {
+    text-align: center;
+    page-break-after: always;
+}
+
+.cover img {
+    max-width: 100%;
+    height: auto;
+    margin: 2em 0;
+}
+
+.chapter-title {
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 1.5em;
+    color: #2a4365;
+}
+
+.subtitle {
+    font-style: italic;
+    font-size: 1.2em;
+    color: #666;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.quote {
+    font-style: italic;
+    margin: 2em 0;
+    padding: 1em;
+    border-left: 4px solid #7f9cf5;
+    background-color: #f7fafc;
+}
+
+.bible-reference {
+    font-style: italic;
+    color: #2a4365;
+    font-weight: bold;
+    text-align: right;
+    display: block;
+    margin-top: 0.5em;
+}
+
+.drop-cap:first-letter {
+    float: left;
+    font-size: 4em;
+    line-height: 0.8;
+    padding-right: 0.1em;
+    color: #7f9cf5;
+    font-weight: bold;
+}
+
+.callout {
+    background-color: #ebf4ff;
+    border-left: 4px solid #7f9cf5;
+    padding: 1.5em;
+    margin: 2em 0;
+    border-radius: 0.5em;
+}
+
+.book-section {
+    margin: 2em 0;
+    padding: 1em 0;
+}
+
+.book-content {
+    margin: 1em 0;
+}
+
+.book-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #2a4365;
+    margin-bottom: 0.5em;
+}
+
+.book-description {
+    margin-left: 0;
+}
+
+.bibliography-entry {
+    margin-bottom: 0.8em;
+    text-indent: -1.5em;
+    padding-left: 1.5em;
+}
+
+.term {
+    margin-bottom: 1.5em;
+}
+
+.term-name {
+    font-weight: bold;
+    color: #2a4365;
+    font-size: 1.1em;
+    margin-bottom: 0.3em;
+    border-bottom: 1px dotted #7f9cf5;
+    padding-bottom: 0.2em;
+}
+
+.term-definition {
+    margin-left: 0;
+}
+
+/* Page breaks */
+.chapter, .part {
+    page-break-before: always;
+}
+
+.chapter:first-child {
+    page-break-before: avoid;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+}
+
+/* Lists */
+ul, ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+/* Strong and emphasis */
+strong {
+    color: #2a4365;
+}
+
+em {
+    color: #666;
+}
+
+/* Navigation */
+.navigation-buttons {
+    text-align: center;
+    margin: 2em 0;
+    padding: 1em 0;
+    border-top: 1px solid #7f9cf5;
+}
+
+.nav-button {
+    display: inline-block;
+    margin: 0 0.5em;
+    padding: 0.5em 1em;
+    background-color: #2a4365;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.3em;
+}
+
+/* Author note */
+.author-note {
+    font-style: italic;
+    text-align: center;
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #7f9cf5;
+}
+
+/* Remove border for cover page */
+.cover .author-note {
+    border-top: none;
+    padding-top: 0;
+}
+
+/* Remove all borders and lines from cover page */
+.cover {
+    border: none !important;
+    outline: none !important;
+}
+
+.cover * {
+    border: none !important;
+    outline: none !important;
+}
+
+.cover h1,
+.cover h2,
+.cover h3,
+.cover p,
+.cover div {
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    outline: none !important;
+}
+
+/* Specifically remove border-bottom from h2 on cover page */
+.cover h2 {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
