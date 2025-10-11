@@ -2,8 +2,7 @@
 <package xmlns="http://www.idpf.org/2007/opf" unique-identifier="book-id" version="2.0">
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
     <dc:identifier id="book-id">urn:uuid:reality-unveiled-2025</dc:identifier>
-    <dc:title>Reality Unveiled</dc:title>
-    <dc:title id="subtitle">How Jesus Revealed You Are More Powerful Than You Ever Imagined</dc:title>
+    <dc:title id="main-title" opf:title-type="main">Reality Unveiled: How Jesus Revealed You Are More Powerful Than You Ever Imagined</dc:title>
     <dc:creator opf:file-as="Boff, Ansilo" opf:role="aut">Ansilo Boff</dc:creator>
     <dc:subject>Christian Deconstruction</dc:subject>
     <dc:subject>Manifestation</dc:subject>

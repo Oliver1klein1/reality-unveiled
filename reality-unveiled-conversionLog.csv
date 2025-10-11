@@ -1,0 +1,4 @@
+﻿"Type","Description"
+"Error","E20006: There are more than one title defined in OPF metadata. But none of them is refined with ""title-type"" as ""main"" title. Refer http://idpf.org/epub/30/spec/epub30-publications.html#sec-opf-dctitle for more info.","","","",""
+"Error","E21011: The book title was not set. Please set the title before generating the mobi.","","","",""
+"Status","Book conversion failed."
