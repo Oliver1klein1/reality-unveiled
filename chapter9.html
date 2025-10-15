@@ -97,7 +97,7 @@
 
         /* Sections */
         section {
-            padding: 6rem 0;
+            padding: 2rem 0;
             position: relative;
         }
 
@@ -107,7 +107,8 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
+            page-break-after: avoid;
         }
 
         .section-header h2 {
@@ -143,6 +144,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
+            page-break-inside: avoid;
         }
 
         .card {
@@ -154,6 +156,8 @@
             border: 1px solid rgba(201, 162, 39, 0.1);
             position: relative;
             overflow: hidden;
+            page-break-inside: avoid;
+            page-break-after: avoid;
         }
 
         .card::before {
@@ -343,12 +347,15 @@
         
         .chapter-title-card {
             background: linear-gradient(135deg, #1B1F3B 0%, #2C3458 100%);
-            padding: 4rem 2rem;
+            padding: 2rem;
             text-align: center;
             color: white;
             border-radius: 15px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             margin: 0 auto;
+            page-break-inside: avoid;
+            page-break-before: avoid;
+            page-break-after: avoid;
         }
         
         .chapter-title-section h1 {

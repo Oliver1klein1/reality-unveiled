@@ -27,6 +27,8 @@ h2 {
     color: #2a4365;
     border-bottom: 2px solid #7f9cf5;
     padding-bottom: 0.3em;
+    page-break-before: avoid;
+    page-break-after: avoid;
 }
 
 h3 {
@@ -34,6 +36,8 @@ h3 {
     margin-top: 1.3em;
     margin-bottom: 0.6em;
     color: #2a4365;
+    page-break-before: avoid;
+    page-break-after: avoid;
 }
 
 h4 {
@@ -111,10 +115,24 @@ p {
 .book-section {
     margin: 2em 0;
     padding: 1em 0;
+    page-break-inside: auto;
+    page-break-before: auto;
+    page-break-after: auto;
 }
 
 .book-content {
     margin: 1em 0;
+}
+
+.book-cover {
+    width: 50%;
+    margin: 0 auto 1em auto;
+}
+
+.book-cover img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .book-title {
@@ -126,6 +144,59 @@ p {
 
 .book-description {
     margin-left: 0;
+}
+
+.book-subtitle {
+    font-style: italic;
+    font-size: 1.1em;
+    color: #7f9cf5;
+    margin-bottom: 0.5em;
+}
+
+.series-section {
+    background-color: #f7fafc;
+    padding: 3em 2.5em;
+    margin: 2em 0;
+    border: 1px solid #7f9cf5;
+    border-radius: 0.5em;
+    page-break-inside: avoid;
+    page-break-before: always;
+    page-break-after: auto;
+}
+
+.series-section .book-content {
+    margin: 0;
+    display: block;
+}
+
+.series-header {
+    text-align: center;
+    margin-bottom: 2.5em;
+    margin-top: 0;
+}
+
+.series-title {
+    font-size: 1.5em;
+    color: #2a4365;
+    margin-bottom: 0.5em;
+    page-break-before: avoid;
+    page-break-after: avoid;
+}
+
+.series-tagline {
+    font-size: 1.1em;
+    color: #7f9cf5;
+    font-style: italic;
+    margin-bottom: 0.5em;
+}
+
+.series-author {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.series-description {
+    text-align: left;
 }
 
 .bibliography-entry {
@@ -158,6 +229,60 @@ p {
 
 .chapter:first-child {
     page-break-before: avoid;
+}
+
+/* Prevent unwanted page breaks in Chapter 9 */
+.chapter-title-section {
+    page-break-inside: avoid;
+    page-break-before: avoid;
+    page-break-after: avoid;
+}
+
+.section-header {
+    page-break-after: avoid;
+}
+
+.card {
+    page-break-inside: auto;
+}
+
+.card-grid {
+    page-break-inside: auto;
+}
+
+section {
+    page-break-before: avoid;
+}
+
+/* Allow page breaks between steps only if needed */
+.step {
+    page-break-inside: avoid;
+    page-break-before: auto;
+    page-break-after: auto;
+}
+
+/* Chapter 9 specific styles */
+.chapter-title-card {
+    padding: 1.5em;
+    margin-bottom: 1em;
+}
+
+.section-header {
+    margin-bottom: 1em;
+}
+
+.card {
+    padding: 1.5em;
+    margin: 1em 0;
+}
+
+.card-grid {
+    margin: 1em 0;
+}
+
+.step {
+    padding: 1.5em;
+    margin: 1em 0;
 }
 
 /* Images */

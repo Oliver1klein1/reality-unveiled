@@ -84,6 +84,9 @@
             margin: 3rem 0;
             padding: 2rem 0;
             border-bottom: 1px solid var(--secondary-color);
+            page-break-inside: auto;
+            page-break-before: auto;
+            page-break-after: auto;
         }
         
         .book-section:last-child {
@@ -98,7 +101,7 @@
         }
         
         .book-cover {
-            width: 40%;
+            width: 50%;
             flex-shrink: 0;
         }
         
@@ -150,6 +153,66 @@
             background-color: var(--secondary-color);
         }
         
+        .series-section {
+            background: linear-gradient(to bottom, #ebf8ff, #f7fafc);
+            padding: 4rem 3.5rem;
+            border-radius: 1rem;
+            margin: 3rem 0;
+            border: 2px solid var(--secondary-color);
+            page-break-inside: avoid;
+            page-break-before: always;
+            page-break-after: auto;
+        }
+        
+        .series-section .book-content {
+            margin: 0;
+            display: block;
+        }
+        
+        .series-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            margin-top: 0;
+        }
+        
+        .series-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            page-break-before: avoid;
+            page-break-after: avoid;
+        }
+        
+        .series-tagline {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .series-author {
+            font-size: 1rem;
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+        
+        .series-description {
+            text-align: left;
+            line-height: 1.8;
+        }
+        
+        .series-description p {
+            margin-bottom: 1rem;
+        }
+        
+        .book-subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
         @media (max-width: 768px) {
             .book-content {
                 flex-direction: column;
@@ -159,6 +222,10 @@
                 width: 100%;
                 max-width: 300px;
                 margin: 0 auto;
+            }
+            
+            .series-section {
+                padding: 2rem 1rem;
             }
         }
     </style>
@@ -240,19 +307,34 @@
                 </div>
             </div>
         </div>
+        <div class="book-section series-section">
+            <div class="series-header">
+                <h2 class="series-title">The Father's Heart Children's Book Series</h2>
+                <p class="series-tagline"><em>See others and God through Jesus' eyes.</em></p>
+                <p class="series-author">By Ansilo Boff</p>
+            </div>
+            <div class="series-description">
+                <p><strong>What if the stories we tell about God helped children feel safe, kind, and deeply loved?</strong></p>
+                <p>In <em>The Father's Heart Series</em>, Ansilo Boff re-introduces children to the gentle, forgiving Father that Jesus revealed — not a God of punishment or fear, but one of peace, mercy, and inclusion.</p>
+                <p>Through tender storytelling and luminous watercolor illustrations, each book turns everyday moments into spiritual discoveries: forgiving a friend, using kind words, feeling peace during storms, sharing what we have, and welcoming others at our table.</p>
+                <p><strong>Every page helps children (and parents) unlearn fear and rediscover love.</strong></p>
+                <p>Because when we see others — and God — through Jesus' eyes, the world becomes a brighter, kinder place.</p>
+                <p><em>Perfect for bedtime reading, family devotion, or Sunday-school story time, The Father's Heart Series nurtures young hearts to grow in empathy, peace, and joy.</em></p>
+            </div>
+        </div>
         
         <div class="book-section">
             <div class="book-content">
                 <div class="book-cover">
-                    <img src="otherbooks/when-my-little-brother.jpg" alt="When My Little Brother Broke My Toy book cover">
+                    <img src="fh-book1-cover.jpg" alt="When My Little Brother Broke My Toy book cover">
                 </div>
                 <div class="book-description">
-                    <div class="book-title">When My Little Brother Broke My Toy: Explaining True Forgiveness To A Child (… from 'The Father's Heart' Series)</div>
+                    <div class="book-title">When My Little Brother Broke My Toy</div>
+                    <div class="book-subtitle">So That's What "Forgive" Means!</div>
                     <div class="book-text">
-                        <p>In True Forgiveness, children discover who God truly is—through the eyes of Jesus. With gentle storytelling and beautiful illustrations, this book helps kids understand that real forgiveness isn't about payback or punishment — it's about love that keeps going, even when we make mistakes.</p>
-                        <p>What if some stories make God sound angry or mean - but Jesus showed us a Father who is always kind?</p>
-                        <p>Through simple examples, bright pictures, and a fun "Forgiveness Quiz," your child will learn how to forgive others, feel God's love, and recognize when something doesn't sound like the Father Jesus revealed.</p>
-                        <p>A heartwarming tool for parents and teachers to build faith rooted in love, not fear.</p>
+                        <p><strong>What if forgiveness wasn't about payback—but about love that keeps going?</strong></p>
+                        <p>When a child's toy breaks, so does his heart. But through gentle storytelling and bright illustrations, kids discover what Jesus revealed: the Father never punishes or holds grudges—He only loves and forgives.</p>
+                        <p>A tender, hope-filled story that helps children let go of anger, make peace quickly, and feel God's smile again.</p>
                     </div>
                 </div>
             </div>
@@ -261,15 +343,148 @@
         <div class="book-section">
             <div class="book-content">
                 <div class="book-cover">
-                    <img src="otherbooks/cover-whispers-to-my-unborn-daughter-from-dad-boff.jpg" alt="Whispers To My Unborn Daughter book cover">
+                    <img src="fh-book2-cover.jpg" alt="When I Decided I Won't Be Friends with Oliver Anymore book cover">
                 </div>
                 <div class="book-description">
-                    <div class="book-title">Whispers To My Unborn Daughter: A Dad's Poetic Life Jacket (… from 'The Unspoken Hopes and Dreams' Series)</div>
+                    <div class="book-title">When I Decided I Won't Be Friends with Oliver Anymore</div>
+                    <div class="book-subtitle">So That's What "Not Holding a Grudge" Means!</div>
                     <div class="book-text">
-                        <p>Before she takes her first breath, a father's love is already writing poems in the quiet of the heart.</p>
-                        <p><strong>Whispers to My Unborn Daughter</strong> is a tender collection of short, lyrical verses - a father's heartfelt messages to the precious life he has yet to hold. Each poem is a life jacket of love, gently guiding her through the waters of life with virtues like faithfulness, courage, kindness, forgiveness, and inner beauty.</p>
-                        <p>Perfect for expectant dads and families awaiting their little girl's arrival, these five-line poems blend timeless wisdom with soothing rhythm, offering comfort, hope, and inspiration. Accompanied by dreamy, child-friendly illustrations of ocean life and gentle warmth, this book makes a beautiful keepsake for baby showers, gender reveals, and nursery storytime.</p>
-                        <p>Let each whisper wrap your daughter in peace - until the day she hears your voice for real.</p>
+                        <p><strong>Can love start again after friendship breaks?</strong></p>
+                        <p>When hurt feelings turn heavy, one child learns that real strength isn't in winning … it's in forgiving. Through playful scenes and a whisper of God's voice, readers see that the Father never keeps score; He simply says, "Let's start again."</p>
+                        <p>A heartfelt reminder for every child that mercy always brings the sunshine back.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book-section">
+            <div class="book-content">
+                <div class="book-cover">
+                    <img src="fh-book3-cover.jpg" alt="Why Saying Bad Words To or About Others Makes Everyone Sad book cover">
+                </div>
+                <div class="book-description">
+                    <div class="book-title">Why Saying Bad Words To or About Others Makes Everyone Sad</div>
+                    <div class="book-subtitle">So That's What "Guarding Our Tongue" Means!</div>
+                    <div class="book-text">
+                        <p><strong>Words can hurt—or heal.</strong></p>
+                        <p>After blurting something mean, a young child discovers that words are like colors: some paint gray, others paint joy. With Jesus as the gentle teacher, children learn how the Father's words always bless, never curse.</p>
+                        <p>A joyful story that helps kids speak kindly, choose bright "heart-colors," and spread love wherever they go.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book-section">
+            <div class="book-content">
+                <div class="book-cover">
+                    <img src="fh-book4-cover.jpg" alt="When Thunder Made Me Hide book cover">
+                </div>
+                <div class="book-description">
+                    <div class="book-title">When Thunder Made Me Hide</div>
+                    <div class="book-subtitle">So That's What "Peace Inside" Means!</div>
+                    <div class="book-text">
+                        <p><strong>Even the loudest storm can't shake God's peace.</strong></p>
+                        <p>When thunder roars, fear whispers, "God is angry." But in the quiet of the child's heart, another voice answers, "I'm here—always calm, always love."</p>
+                        <p>This comforting story helps children trade fear for trust and discover that true safety comes from the Father's presence within.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book-section">
+            <div class="book-content">
+                <div class="book-cover">
+                    <img src="fh-book5-cover.jpg" alt="When We Made Room at Our Table book cover">
+                </div>
+                <div class="book-description">
+                    <div class="book-title">When We Made Room at Our Table</div>
+                    <div class="book-subtitle">So That's What "Welcome" Means!</div>
+                    <div class="book-text">
+                        <p><strong>What happens when we make room for one more?</strong></p>
+                        <p>A simple bowl of soup becomes a feast of friendship as a family invites new neighbors to share their table. Through warmth and wonder, children learn that love grows by including others—the way the Father includes everyone.</p>
+                        <p>A beautiful story of generosity, belonging, and the kind of welcome that feels like home.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book-section series-section">
+            <div class="series-header">
+                <h2 class="series-title">The 'Unspoken Hopes and Dreams' Series</h2>
+                <p class="series-tagline"><em>A whisper. A promise. A lifeline wrapped in verse.</em></p>
+                <p class="series-author">By Ansilo Boff</p>
+            </div>
+            <div class="series-description">
+                <p><strong>The Unspoken Hopes and Dreams series is a poetic love letter from parent to child—written before the first breath, the first step, the first word.</strong></p>
+                <p>Each book is a tender collection of five-line verses that anchor a child's soul in love, courage, and belonging.</p>
+                <p>Perfect for parents to read with little ones aged 3–7, these keepsakes bridge generations and preserve the most sacred moments of early parenthood.</p>
+                <p><strong>Whether you're expecting or already holding your miracle, these books are a timeless gift from your heart to theirs.</strong></p>
+            </div>
+        </div>
+        
+        <div class="book-section">
+            <div class="book-content">
+                <div class="book-cover">
+                    <img src="b1-mum-son2.jpg" alt="Whispers to My Unborn Son – A Mum's Poetic Life Jacket book cover">
+                </div>
+                <div class="book-description">
+                    <div class="book-title">Whispers to My Unborn Son – A Mum's Poetic Life Jacket</div>
+                    <div class="book-text">
+                        <p><strong>Before your son takes his first breath, you've already begun to shape his heart—with your love, your hope, your dreams for the man he'll become.</strong></p>
+                        <p>This book captures that sacred whisper.</p>
+                        <p>Through simple, five-line rhymes and enchanting illustrations, a mother passes on courage, gentleness, and grace.</p>
+                        <p>A perfect baby shower or bedtime gift—a keepsake to treasure forever.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book-section">
+            <div class="book-content">
+                <div class="book-cover">
+                    <img src="b2-dad-son-cover.jpg" alt="Whispers to My Unborn Son – A Dad's Poetic Life Jacket book cover">
+                </div>
+                <div class="book-description">
+                    <div class="book-title">Whispers to My Unborn Son – A Dad's Poetic Life Jacket</div>
+                    <div class="book-text">
+                        <p><strong>Long before your son opens his eyes, your heartbeat is already teaching him strength and love.</strong></p>
+                        <p>This book is your voice when words fall short—a father's legacy in verse.</p>
+                        <p>Each five-line poem becomes a compass for his soul, guiding him toward truth and tenderness.</p>
+                        <p>An unforgettable keepsake for new or expecting fathers—promising wisdom that lasts a lifetime.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book-section">
+            <div class="book-content">
+                <div class="book-cover">
+                    <img src="b3_dad_daughter_cover.jpg" alt="Whispers to My Unborn Daughter – A Dad's Poetic Life Jacket book cover">
+                </div>
+                <div class="book-description">
+                    <div class="book-title">Whispers to My Unborn Daughter – A Dad's Poetic Life Jacket</div>
+                    <div class="book-text">
+                        <p><strong>A daughter may not remember every word her father says—but she'll never forget how he made her feel: safe, seen, and loved.</strong></p>
+                        <p>These verses are his embrace in rhyme—a father's quiet devotion captured in five lines at a time.</p>
+                        <p>Each poem plants seeds of confidence, compassion, and strength.</p>
+                        <p>A heartwarming gift for dads welcoming daughters—the beginning of a bond that lasts forever.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book-section">
+            <div class="book-content">
+                <div class="book-cover">
+                    <img src="b4 mum-daughter.jpg" alt="Whispers to My Unborn Daughter – A Mum's Poetic Life Jacket book cover">
+                </div>
+                <div class="book-description">
+                    <div class="book-title">Whispers to My Unborn Daughter – A Mum's Poetic Life Jacket</div>
+                    <div class="book-text">
+                        <p><strong>Before your daughter sees your face, she already carries your heartbeat within her.</strong></p>
+                        <p>This book is your soul, written in lullabies.</p>
+                        <p>Through tender five-line poems and radiant illustrations, a mother weaves lessons of kindness, courage, and freedom.</p>
+                        <p>A gift every mum-to-be will cherish—a promise of love wrapped in poetry.</p>
                     </div>
                 </div>
             </div>
