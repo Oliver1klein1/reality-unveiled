@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Reality Unveiled: Table of Contents</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/style.css"/>
+    <style>
+        :root {
+            --primary-color: #2a4365;
+            --secondary-color: #7f9cf5;
+            --accent-color: #f6ad55;
+            --light-bg: #f7fafc;
+            --dark-text: #2d3748;
+            --light-text: #fff;
+        }
+        
+        body {
+            font-family: 'Merriweather', serif;
+            color: var(--dark-text);
+            line-height: 1.8;
+            background-color: var(--light-bg);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .table-of-contents {
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .toc-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .toc-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--secondary-color) 20%, 
+                var(--accent-color) 50%, 
+                var(--secondary-color) 80%, 
+                transparent 100%);
+        }
+        
+        .part-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: linear-gradient(90deg, 
+                rgba(42, 67, 101, 0.05) 0%, 
+                rgba(127, 156, 245, 0.05) 100%);
+            border-radius: 0.5rem;
+        }
+        
+        .part-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            text-align: center;
+        }
+        
+        .part-title a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .part-title a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .toc-item {
+            margin-bottom: 0.75rem;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+        
+        .toc-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .toc-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem 0;
+        }
+        
+        .toc-item a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+            padding: 2rem 0;
+            border-top: 1px solid var(--secondary-color);
+        }
+        
+        .nav-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .toc-title {
+                font-size: 2rem;
+            }
+            
+            .part-title {
+                font-size: 1.25rem;
+            }
+            
+            .toc-item a {
+                font-size: 1rem;
+            }
+            
+            .navigation-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Print-specific styles for PDF generation */
+        @media print {
+            @page {
+                size: 6in 9in; /* Paperback and hardcover dimensions */
+                margin: 0.75in;
+            }
+            
+            body {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 11pt;
+                line-height: 1.6;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            
+            /* Hide navigation */
+            .navigation-buttons,
+            nav,
+            .navbar,
+            .menu,
+            .breadcrumb,
+            .pagination,
+            .nav-button,
+            [class*="nav"],
+            [class*="menu"],
+            [class*="breadcrumb"] {
+                display: none !important;
+            }
+            
+            /* Preserve content styling */
+            .bible-quote,
+            .callout,
+            .callout-quote,
+            .highlight {
+                display: block !important;
+            }
+            
+            /* Ensure images print properly */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+                page-break-inside: avoid;
+            }
+            
+            /* Make all quote classes black for printing */
+            .chapter-quote,
+            .bible-reference,
+            .callout-quote,
+            .callout-quote * {
+                color: #000 !important;
+            }
+            
+            /* Force all elements with inline color to be black when printing */
+            [style*="color"] {
+                color: #000 !important;
+            }
+            
+            /* Typography */
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                color: #000;
+            }
+            
+            h1 {
+                font-size: 20pt;
+                margin-bottom: 0.75rem;
+            }
+            
+            h2 {
+                font-size: 16pt;
+                margin-top: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            p, li {
+                page-break-inside: auto;
+                orphans: 2;
+                widows: 2;
+                margin-bottom: 0.5rem;
+            }
+            
+            /* Allow paragraphs inside callouts to break more freely */
+            .callout p,
+            .callout-quote p {
+                page-break-inside: auto;
+                orphans: 1;
+                widows: 1;
+            }
+            
+            /* Page breaks */
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .no-break {
+                page-break-inside: avoid;
+            }
+            
+            .chapter {
+                page-break-before: always;
+            }
+            
+            /* Allow callouts and info-boxes to break across pages */
+            .callout,
+            .callout-quote,
+            .info-box {
+                page-break-inside: auto;
+            }
+            
+            .bullet-points,
+            ul, ol {
+                page-break-inside: auto;
+            }
+            
+            /* Reduce margins on callout titles */
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            /* Reduce margins on callout-quotes */
+            .callout-quote {
+                margin: 1rem 0 !important;
+                padding: 1rem !important;
+            }
+            
+            /* Links */
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+            
+            /* Remove card shading for print */
+            .part-section {
+                background: #fff !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                margin-top: 0.5rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            /* Reduce spacing for print */
+            .toc-item {
+                margin-bottom: 0.5rem !important;
+            }
+            
+            /* Remove gradient backgrounds for print */
+            .toc-title::after {
+                display: none !important;
+            }
+            
+            /* Reduce title margin for print */
+            .toc-title {
+                margin-bottom: 1rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<body>
+<div class="table-of-contents">
+<h1 class="toc-title">Table of Contents</h1>
+<div class="toc-item">
+<a href="introduction.html">Introduction</a>
+</div>
+<div class="part-section">
+<h2 class="part-title"><a href="part1.html">Part 1: The Nature of Reality and Consciousness</a></h2>
+<div class="toc-item">
+<a href="chapter1.html">Chapter 1: The Collapse of Materialism</a>
+</div>
+<div class="toc-item">
+<a href="chapter2.html">Chapter 2: Quantum Reality - When Physics Meets Consciousness</a>
+</div>
+<div class="toc-item">
+<a href="chapter3.html">Chapter 3: The Observer Effect - You Create Your Reality</a>
+</div>
+</div>
+<div class="part-section">
+<h2 class="part-title"><a href="part2.html">Part 2: Evidence for Non-Local Consciousness</a></h2>
+<div class="toc-item">
+<a href="chapter4.html">Chapter 4: What Near-Death Experiences Reveal</a>
+</div>
+<div class="toc-item">
+<a href="chapter5.html">Chapter 5: Reincarnation - The Evidence We Can't Ignore</a>
+</div>
+<div class="toc-item">
+<a href="chapter6.html">Chapter 6: Memory Beyond Brain Function</a>
+</div>
+</div>
+<div class="part-section">
+<h2 class="part-title"><a href="part3.html">Part 3: The Power of Knowing Who We Are</a></h2>
+<div class="toc-item">
+<a href="chapter7.html">Chapter 7: You Are More Than You Think You Are</a>
+</div>
+<div class="toc-item">
+<a href="chapter8.html">Chapter 8: Connecting With the Father — Tapping the Stream of Higher Consciousness</a>
+</div>
+</div>
+<div class="part-section">
+<h2 class="part-title"><a href="part4.html">Part 4: Practical Guide to Manifesting Miracles</a></h2>
+<div class="toc-item">
+<a href="chapter9.html">Chapter 9: Manifesting Miracles — The 6-Step Prayer Manual</a>
+</div>
+</div>
+<div class="toc-item">
+<a href="conclusion.html">Conclusion: Jesus' Hidden Teachings</a>
+</div>
+<div class="toc-item">
+<a href="other-books.html">Other Books By Ansilo Boff</a>
+</div>
+<div class="part-section">
+<h2 class="part-title">Reference Materials</h2>
+<div class="toc-item">
+<a href="appendix.html">Appendix: Glossary of Key Terms</a>
+</div>
+<div class="toc-item">
+<a href="bibliography.html">Bibliography</a>
+</div>
+</div>
+
+</div>
+</body>
+</body>
+</html>

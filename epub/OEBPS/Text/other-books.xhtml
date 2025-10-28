@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Escape The Hell Myth: Books By Ansilo Boff</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/style.css"/>
+    <style>
+        :root {
+            --primary-color: #2a4365;
+            --secondary-color: #7f9cf5;
+            --accent-color: #f6ad55;
+            --light-bg: #f7fafc;
+            --dark-text: #2d3748;
+            --light-text: #fff;
+            --callout-bg: #ebf4ff;
+        }
+        
+        body {
+            font-family: 'Merriweather', serif;
+            color: var(--dark-text);
+            line-height: 1.8;
+            background-color: var(--light-bg);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: justify;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-top: 1.5em;
+            margin-bottom: 0.75em;
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.3em;
+        }
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+        
+        h3 {
+            font-size: 1.75rem;
+        }
+        
+        h4 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+        
+        .chapter {
+            padding: 2rem 0;
+        }
+        
+        .chapter-title {
+            text-align: center;
+            font-size: 2.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        .book-section {
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--secondary-color);
+            page-break-inside: auto;
+            page-break-before: auto;
+            page-break-after: auto;
+        }
+        
+        .book-section:last-child {
+            border-bottom: none;
+        }
+        
+        .book-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .book-cover {
+            width: 30%;
+            flex-shrink: 0;
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .book-description {
+            flex: 1;
+        }
+        
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .book-text {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid var(--secondary-color);
+        }
+        
+        .nav-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .series-section {
+            background: linear-gradient(to bottom, #ebf8ff, #f7fafc);
+            padding: 4rem 3.5rem;
+            border-radius: 1rem;
+            margin: 3rem 0;
+            border: 2px solid var(--secondary-color);
+            page-break-inside: avoid;
+            page-break-before: auto;
+            page-break-after: auto;
+        }
+        
+        .series-section .book-content {
+            margin: 0;
+            display: block;
+        }
+        
+        .series-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            margin-top: 0;
+        }
+        
+        .series-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            page-break-before: avoid;
+            page-break-after: avoid;
+        }
+        
+        .series-tagline {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .series-author {
+            font-size: 1rem;
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+        
+        .series-description {
+            text-align: left;
+            line-height: 1.8;
+        }
+        
+        .series-description p {
+            margin-bottom: 1rem;
+        }
+        
+        .book-subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .book-content {
+                flex-direction: column;
+            }
+            
+            .book-cover {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .series-section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Print-specific styles */
+        @media print {
+            /* Page setup */
+            @page {
+                size: 8.5in 11in;
+                margin: 1in;
+            }
+            
+            /* Base styles */
+            body {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 14pt;
+                line-height: 1.6;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            
+            /* Hide navigation */
+            .navigation,
+            .nav-link,
+            .navigation-buttons,
+            .nav-button,
+            nav,
+            .navbar,
+            .menu,
+            .breadcrumb,
+            .pagination,
+            [class*="nav"],
+            [class*="menu"],
+            [class*="breadcrumb"] {
+                display: none !important;
+            }
+            
+            /* Preserve content styling */
+            .bible-quote {
+                font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+                font-style: italic;
+                color: #000;
+                background: #f0f4f8;
+                border-left: 4px solid #4299e1;
+                padding: 1.2rem 1.5rem;
+                margin: 1.5rem 0;
+                border-radius: 0 0.5rem 0.5rem 0;
+                page-break-inside: avoid;
+            }
+            
+            .highlight,
+            .callout {
+                page-break-inside: auto;
+                margin: 1rem 0;
+            }
+            
+            /* Keep series section together when possible */
+            .series-section {
+                page-break-inside: avoid;
+                margin: 1rem 0;
+            }
+            
+            /* Allow book sections to break across pages naturally */
+            .book-section {
+                page-break-inside: auto;
+                margin: 1rem 0;
+            }
+            
+            /* Typography */
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                color: #000;
+            }
+            
+            h1 {
+                font-size: 22pt;
+                margin-bottom: 1rem;
+            }
+            
+            h2 {
+                font-size: 18pt;
+                margin-top: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            p {
+                page-break-inside: auto;
+                orphans: 2;
+                widows: 2;
+                margin-bottom: 0.5rem;
+            }
+            
+            /* Allow list items to break but keep paragraphs intact */
+            li {
+                orphans: 2;
+                widows: 2;
+            }
+            
+            /* Images */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+                page-break-inside: avoid;
+                display: block;
+                margin: 1rem auto;
+            }
+            
+            /* Allow book cover images to flow naturally */
+            .book-cover {
+                page-break-before: auto;
+            }
+            
+            .book-cover img {
+                page-break-before: auto;
+            }
+            
+            /* Page breaks */
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .no-break {
+                page-break-inside: avoid;
+            }
+            
+            .chapter {
+                /* No forced page break for this content section */
+            }
+            
+            /* Tables */
+            table {
+                page-break-inside: auto;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            /* Keep table rows together when possible */
+            tr {
+                page-break-inside: avoid;
+            }
+            
+            th, td {
+                border: 1px solid #000;
+                padding: 0.5rem;
+                text-align: left;
+            }
+            
+            /* Allow info-boxes (like the prophecy table box) to break */
+            .info-box {
+                page-break-inside: auto;
+            }
+            
+            /* Reduce info-box title margins */
+            .info-box-title {
+                margin-bottom: 0.75rem !important;
+                page-break-after: avoid;
+            }
+            
+                        /* Reduce margins on callout-quotes to prevent large gaps */
+            .callout-quote {
+                margin: 1rem 0 !important;
+                padding: 1rem !important;
+            }
+            
+/* Lists */
+
+            ul, ol {
+                page-break-inside: auto;
+            }
+            
+            /* Links */
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+            
+            /* Hide elements that shouldn't print */
+            .no-print,
+            .screen-only {
+                display: none !important;
+            }
+            
+            /* Preserve original container and layout */
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<body>
+<div class="container">
+<h1 class="chapter-title">Books By Ansilo Boff</h1>
+<div class="book-section series-section">
+<div class="series-header">
+<h2 class="series-title">The "Rediscovering Jesus' Subverted Teachings and the Father's Love" Series</h2>
+<p class="series-tagline"><em>From fear to freedom. From illusion to truth.</em></p>
+<p class="series-author">By Ansilo Boff</p>
+</div>
+<div class="series-description">
+<p>For two thousand years, religion has distorted Jesus' message … turning liberation into obedience, and love into fear. It told us God demanded blood, that sin defined us from birth, and that submission (being 'under authority') mattered more than awareness.</p>
+<p><strong>But what if that story wasn't from Jesus at all?</strong></p>
+<p>This series rips through the edits, lies, and power plays that buried his true teachings. It exposes how Yahweh's wrath was mistaken for the Father's love … and how Paul's control replaced Jesus' freedom. From <em>Liberating Humanity</em> to <em>Escape the Hell Myth</em>, these books uncover a single revelation: <strong>Jesus never preached fear, wrath, or blood sacrifice. The scriptures were tampered with. Jesus revealed a Father who restores, not destroys.</strong></p>
+<p><strong>Raw. Daring. Restorative.</strong></p>
+<p>This isn't the end of faith … it's the beginning of awakening and living abundantly.</p>
+<p><strong>Here are the first 5 books in this Series:</strong></p>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="Liberating Humanity book cover" src="../images/liberating-humanity-cover.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">Liberating Humanity: How Jesus Exposed The Evil God Of Moses And Warned Of Paul</div>
+<div class="book-text">
+<p><strong>You've been worshiping the wrong God!</strong></p>
+<p>Jesus exposed Him. Paul enshrined Him.</p>
+<p><strong>Yahweh is not the Father!</strong></p>
+<p>This book is a wrecking ball.</p>
+<p>With scripture as evidence, it unmasks Yahweh's commands: - genocide, slavery, child sacrifice — and the shocking truth that Paul, not Jesus, built Christianity.</p>
+<p>Our Father's identity has been distorted. As has ours. We'd been neutralized. Mission-accomplished. Potential-stifled.</p>
+<p>This book splits the cracks wide open: no blood sacrifice required, no "original sin," no counterfeit god. Only the Father Jesus revealed … pure love without terms and conditions. United with us.</p>
+<p><strong>Raw. Explosive. Liberating.</strong></p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="Reality Unveiled book cover" src="../images/reality-unveiled-cover.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">Reality Unveiled: How Jesus Revealed You Are More Powerful Than You Ever Imagined</div>
+<div class="book-text">
+<p><strong>What if Jesus' most radical teaching wasn't about sin, but about your power to shape reality?</strong></p>
+<p>In Reality Unveiled, the author takes you beyond religion and into revelation ... where quantum physics, near-death experiences, and ancient wisdom converge to expose the truth: consciousness, not matter, is the foundation of existence.</p>
+<p>Discover how Jesus' hidden sayings align with cutting-edge science to reveal that "the kingdom of God is within you." You are not a helpless sinner awaiting rescue - you are a divine co-creator in a conscious universe, capable of manifesting healing, abundance, and transformation through awakened awareness.</p>
+<p>If you've begun questioning the old stories and are ready to uncover the breathtaking truth of who you really are, turn the page—and awaken to the universe Jesus knew all along.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="Framing Jesus book cover" src="../images/framing-jesus-cover-final.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">Framing Jesus: How Ancient Bible Changes Elevated Jesus Beyond Our Reach</div>
+<div class="book-text">
+<p>Some of what you know of Jesus is a fabrication. Not the man himself, but the story we've been told about him.</p>
+<p>For centuries, the church has systematically reframed Jesus' radical message, turning a revolutionary teacher of love and liberation into a religious figurehead who supports the very systems he came to dismantle.</p>
+<p>This book peels back the layers of theological manipulation to reveal the authentic Jesus: the one who challenged religious authority, championed the marginalized, and taught that the kingdom of God is within you, not in a distant heaven.</p>
+<p><strong>Discover how parts of his identity were touched up for over 2000 years and why it matters.</strong></p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="101 Illustrated Bible Contradictions book cover" src="../images/bible-contradictions-cover-final.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">101 Illustrated Bible Contradictions: And 12 Keys To Unlock The Truths These Reveal</div>
+<div class="book-text">
+<p>What if the Bible's contradictions are clues ... not merely errors?</p>
+<p><strong>101 Illustrated Bible Contradictions</strong> exposes the hidden seams — verses that clash, timelines that twist, doctrines that collide.</p>
+<p>But beneath the chaos lies some deeper truths.</p>
+<p>These cracks reveal two competing images of God: the wrathful Yahweh of Moses versus the loving Father Jesus revealed. And a divided faith — torn between Jesus' Kingdom of Love and Paul's empire-friendly gospel.</p>
+<p>In this eye-opening guide, 12 Keys unlock what the contradictions show us: how Scripture was shaped, edited, and weaponized… and how the Truth still shines through. See the flaws. Find the freedom. Rediscover the Father.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="Escape the Hell Myth book cover" src="../images/Escape-the-hell-myth-cover-final.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">Escape the Hell Myth: Rediscover The Teachings Of Jesus On Love</div>
+<div class="book-text">
+<p>What if the story of eternal torment isn't from Jesus at all?</p>
+<p>In <strong>Escape the Hell Myth</strong>, Ansilo Boff exposes the shocking truth: the doctrine of everlasting punishment was built on mistranslations, theological bias, and fear-based control. Not on the words of Christ.</p>
+<p>Through deep linguistic study and bold spiritual insight, this book unpacks what Sheol, Hades, Gehenna, and aionios really meant in the original texts, how Jesus' teachings reveal a God of restoration, not retribution, why Yahweh's violent commands contradict the loving Father Jesus revealed, and the breathtaking hope of universal reconciliation: a divine plan to heal all creation.</p>
+<p>If you've ever questioned how a loving God could condemn souls to eternal fire, this book will help you escape the lie and rediscover the liberating message of Jesus. <strong>Jesus never taught Hell. He revealed a Father who restores, not destroys.</strong></p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section series-section">
+<div class="series-header">
+<h2 class="series-title">The Father's Heart Children's Book Series</h2>
+<p class="series-tagline"><em>See others and God through Jesus' eyes.</em></p>
+<p class="series-author">By Ansilo Boff</p>
+</div>
+<div class="series-description">
+<p><strong>What if the stories we tell about God helped children feel safe, kind, and deeply loved?</strong></p>
+<p>In <em>The Father's Heart Series</em>, Ansilo Boff re-introduces children to the gentle, forgiving Father that Jesus revealed — not a God of punishment or fear, but one of peace, mercy, and inclusion.</p>
+<p>Through tender storytelling and luminous watercolor illustrations, each book turns everyday moments into spiritual discoveries: forgiving a friend, using kind words, feeling peace during storms, sharing what we have, and welcoming others at our table.</p>
+<p><strong>Every page helps children (and parents) unlearn fear and rediscover love.</strong></p>
+<p>Because when we see others — and God — through Jesus' eyes, the world becomes a brighter, kinder place.</p>
+<p><em>Perfect for bedtime reading, family devotion, or Sunday-school story time, The Father's Heart Series nurtures young hearts to grow in empathy, peace, and joy.</em></p>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="When My Little Brother Broke My Toy book cover" src="../images/fh-book1-cover.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">When My Little Brother Broke My Toy</div>
+<div class="book-subtitle">So That's What "Forgive" Means!</div>
+<div class="book-text">
+<p><strong>What if forgiveness wasn't about payback—but about love that keeps going?</strong></p>
+<p>When a child's toy breaks, so does his heart. But through gentle storytelling and bright illustrations, kids discover what Jesus revealed: the Father never punishes or holds grudges—He only loves and forgives.</p>
+<p>A tender, hope-filled story that helps children let go of anger, make peace quickly, and feel God's smile again.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="When I Decided I Won't Be Friends with Oliver Anymore book cover" src="../images/fh-book2-cover.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">When I Decided I Won't Be Friends with Oliver Anymore</div>
+<div class="book-subtitle">So That's What "Not Holding a Grudge" Means!</div>
+<div class="book-text">
+<p><strong>Can love start again after friendship breaks?</strong></p>
+<p>When hurt feelings turn heavy, one child learns that real strength isn't in winning … it's in forgiving. Through playful scenes and a whisper of God's voice, readers see that the Father never keeps score; He simply says, "Let's start again."</p>
+<p>A heartfelt reminder for every child that mercy always brings the sunshine back.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="Why Saying Bad Words To or About Others Makes Everyone Sad book cover" src="../images/fh-book3-cover.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">Why Saying Bad Words To or About Others Makes Everyone Sad</div>
+<div class="book-subtitle">So That's What "Guarding Our Tongue" Means!</div>
+<div class="book-text">
+<p><strong>Words can hurt—or heal.</strong></p>
+<p>After blurting something mean, a young child discovers that words are like colors: some paint gray, others paint joy. With Jesus as the gentle teacher, children learn how the Father's words always bless, never curse.</p>
+<p>A joyful story that helps kids speak kindly, choose bright "heart-colors," and spread love wherever they go.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="When Thunder Made Me Hide book cover" src="../images/fh-book4-cover.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">When Thunder Made Me Hide</div>
+<div class="book-subtitle">So That's What "Peace Inside" Means!</div>
+<div class="book-text">
+<p><strong>Even the loudest storm can't shake God's peace.</strong></p>
+<p>When thunder roars, fear whispers, "God is angry." But in the quiet of the child's heart, another voice answers, "I'm here—always calm, always love."</p>
+<p>This comforting story helps children trade fear for trust and discover that true safety comes from the Father's presence within.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="When We Made Room at Our Table book cover" src="../images/fh-book5-cover.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">When We Made Room at Our Table</div>
+<div class="book-subtitle">So That's What "Welcome" Means!</div>
+<div class="book-text">
+<p><strong>What happens when we make room for one more?</strong></p>
+<p>A simple bowl of soup becomes a feast of friendship as a family invites new neighbors to share their table. Through warmth and wonder, children learn that love grows by including others—the way the Father includes everyone.</p>
+<p>A beautiful story of generosity, belonging, and the kind of welcome that feels like home.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section series-section">
+<div class="series-header">
+<h2 class="series-title">The 'Unspoken Hopes and Dreams' Series</h2>
+<p class="series-tagline"><em>A whisper. A promise. A lifeline wrapped in verse.</em></p>
+<p class="series-author">By Ansilo Boff</p>
+</div>
+<div class="series-description">
+<p><strong>The Unspoken Hopes and Dreams series is a poetic love letter from parent to child—written before the first breath, the first step, the first word.</strong></p>
+<p>Each book is a tender collection of five-line verses that anchor a child's soul in love, courage, and belonging.</p>
+<p>Perfect for parents to read with little ones aged 3–7, these keepsakes bridge generations and preserve the most sacred moments of early parenthood.</p>
+<p><strong>Whether you're expecting or already holding your miracle, these books are a timeless gift from your heart to theirs.</strong></p>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="Whispers to My Unborn Son – A Mum's Poetic Life Jacket book cover" src="../images/b1-mum-son2.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">Whispers to My Unborn Son – A Mum's Poetic Life Jacket</div>
+<div class="book-text">
+<p><strong>Before your son takes his first breath, you've already begun to shape his heart—with your love, your hope, your dreams for the man he'll become.</strong></p>
+<p>This book captures that sacred whisper.</p>
+<p>Through simple, five-line rhymes and enchanting illustrations, a mother passes on courage, gentleness, and grace.</p>
+<p>A perfect baby shower or bedtime gift—a keepsake to treasure forever.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="Whispers to My Unborn Son – A Dad's Poetic Life Jacket book cover" src="../images/b2-dad-son-cover.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">Whispers to My Unborn Son – A Dad's Poetic Life Jacket</div>
+<div class="book-text">
+<p><strong>Long before your son opens his eyes, your heartbeat is already teaching him strength and love.</strong></p>
+<p>This book is your voice when words fall short—a father's legacy in verse.</p>
+<p>Each five-line poem becomes a compass for his soul, guiding him toward truth and tenderness.</p>
+<p>An unforgettable keepsake for new or expecting fathers—promising wisdom that lasts a lifetime.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="Whispers to My Unborn Daughter – A Dad's Poetic Life Jacket book cover" src="../images/b3_dad_daughter_cover.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">Whispers to My Unborn Daughter – A Dad's Poetic Life Jacket</div>
+<div class="book-text">
+<p><strong>A daughter may not remember every word her father says—but she'll never forget how he made her feel: safe, seen, and loved.</strong></p>
+<p>These verses are his embrace in rhyme—a father's quiet devotion captured in five lines at a time.</p>
+<p>Each poem plants seeds of confidence, compassion, and strength.</p>
+<p>A heartwarming gift for dads welcoming daughters—the beginning of a bond that lasts forever.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="book-section">
+<div class="book-content">
+<div class="book-cover">
+<img alt="Whispers to My Unborn Daughter – A Mum's Poetic Life Jacket book cover" src="../images/b4_mum-daughter.jpg"/>
+</div>
+<div class="book-description">
+<div class="book-title">Whispers to My Unborn Daughter – A Mum's Poetic Life Jacket</div>
+<div class="book-text">
+<p><strong>Before your daughter sees your face, she already carries your heartbeat within her.</strong></p>
+<p>This book is your soul, written in lullabies.</p>
+<p>Through tender five-line poems and radiant illustrations, a mother weaves lessons of kindness, courage, and freedom.</p>
+<p>A gift every mum-to-be will cherish—a promise of love wrapped in poetry.</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reality Unveiled: Other Books By Ansilo Boff</title>
+    <title>Escape The Hell Myth: Books By Ansilo Boff</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -56,6 +56,10 @@
             border-bottom: 2px solid var(--secondary-color);
             padding-bottom: 0.3em;
         }
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
         
         h3 {
             font-size: 1.75rem;
@@ -101,7 +105,7 @@
         }
         
         .book-cover {
-            width: 50%;
+            width: 30%;
             flex-shrink: 0;
         }
         
@@ -160,7 +164,7 @@
             margin: 3rem 0;
             border: 2px solid var(--secondary-color);
             page-break-inside: avoid;
-            page-break-before: always;
+            page-break-before: auto;
             page-break-after: auto;
         }
         
@@ -228,11 +232,218 @@
                 padding: 2rem 1rem;
             }
         }
+
+        /* Print-specific styles */
+        @media print {
+            /* Page setup */
+            @page {
+                size: 8.5in 11in;
+                margin: 1in;
+            }
+            
+            /* Base styles */
+            body {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 14pt;
+                line-height: 1.6;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            
+            /* Hide navigation */
+            .navigation,
+            .nav-link,
+            .navigation-buttons,
+            .nav-button,
+            nav,
+            .navbar,
+            .menu,
+            .breadcrumb,
+            .pagination,
+            [class*="nav"],
+            [class*="menu"],
+            [class*="breadcrumb"] {
+                display: none !important;
+            }
+            
+            /* Preserve content styling */
+            .bible-quote {
+                font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+                font-style: italic;
+                color: #000;
+                background: #f0f4f8;
+                border-left: 4px solid #4299e1;
+                padding: 1.2rem 1.5rem;
+                margin: 1.5rem 0;
+                border-radius: 0 0.5rem 0.5rem 0;
+                page-break-inside: avoid;
+            }
+            
+            .highlight,
+            .callout {
+                page-break-inside: auto;
+                margin: 1rem 0;
+            }
+            
+            /* Keep series section together when possible */
+            .series-section {
+                page-break-inside: avoid;
+                margin: 1rem 0;
+            }
+            
+            /* Allow book sections to break across pages naturally */
+            .book-section {
+                page-break-inside: auto;
+                margin: 1rem 0;
+            }
+            
+            /* Typography */
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                color: #000;
+            }
+            
+            h1 {
+                font-size: 22pt;
+                margin-bottom: 1rem;
+            }
+            
+            h2 {
+                font-size: 18pt;
+                margin-top: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            p {
+                page-break-inside: auto;
+                orphans: 2;
+                widows: 2;
+                margin-bottom: 0.5rem;
+            }
+            
+            /* Allow list items to break but keep paragraphs intact */
+            li {
+                orphans: 2;
+                widows: 2;
+            }
+            
+            /* Images */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+                page-break-inside: avoid;
+                display: block;
+                margin: 1rem auto;
+            }
+            
+            /* Allow book cover images to flow naturally */
+            .book-cover {
+                page-break-before: auto;
+            }
+            
+            .book-cover img {
+                page-break-before: auto;
+            }
+            
+            /* Page breaks */
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .no-break {
+                page-break-inside: avoid;
+            }
+            
+            .chapter {
+                /* No forced page break for this content section */
+            }
+            
+            /* Tables */
+            table {
+                page-break-inside: auto;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            /* Keep table rows together when possible */
+            tr {
+                page-break-inside: avoid;
+            }
+            
+            th, td {
+                border: 1px solid #000;
+                padding: 0.5rem;
+                text-align: left;
+            }
+            
+            /* Allow info-boxes (like the prophecy table box) to break */
+            .info-box {
+                page-break-inside: auto;
+            }
+            
+            /* Reduce info-box title margins */
+            .info-box-title {
+                margin-bottom: 0.75rem !important;
+                page-break-after: avoid;
+            }
+            
+                        /* Reduce margins on callout-quotes to prevent large gaps */
+            .callout-quote {
+                margin: 1rem 0 !important;
+                padding: 1rem !important;
+            }
+            
+/* Lists */
+
+            ul, ol {
+                page-break-inside: auto;
+            }
+            
+            /* Links */
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+            
+            /* Hide elements that shouldn't print */
+            .no-print,
+            .screen-only {
+                display: none !important;
+            }
+            
+            /* Preserve original container and layout */
+            .container {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="chapter-title">Other Books By Ansilo Boff</h1>
+        <h1 class="chapter-title">Books By Ansilo Boff</h1>
+        
+        <div class="book-section series-section">
+            <div class="series-header">
+                <h2 class="series-title">The "Rediscovering Jesus' Subverted Teachings and the Father's Love" Series</h2>
+                <p class="series-tagline"><em>From fear to freedom. From illusion to truth.</em></p>
+                <p class="series-author">By Ansilo Boff</p>
+            </div>
+            <div class="series-description">
+                <p>For two thousand years, religion has distorted Jesus' message … turning liberation into obedience, and love into fear. It told us God demanded blood, that sin defined us from birth, and that submission (being 'under authority') mattered more than awareness.</p>
+                <p><strong>But what if that story wasn't from Jesus at all?</strong></p>
+                <p>This series rips through the edits, lies, and power plays that buried his true teachings. It exposes how Yahweh's wrath was mistaken for the Father's love … and how Paul's control replaced Jesus' freedom. From <em>Liberating Humanity</em> to <em>Escape the Hell Myth</em>, these books uncover a single revelation: <strong>Jesus never preached fear, wrath, or blood sacrifice. The scriptures were tampered with. Jesus revealed a Father who restores, not destroys.</strong></p>
+                <p><strong>Raw. Daring. Restorative.</strong></p>
+                <p>This isn't the end of faith … it's the beginning of awakening and living abundantly.</p>
+                <p><strong>Here are the first 5 books in this Series:</strong></p>
+            </div>
+        </div>
         
         <div class="book-section">
             <div class="book-content">
@@ -246,7 +457,7 @@
                         <p>Jesus exposed Him. Paul enshrined Him.</p>
                         <p><strong>Yahweh is not the Father!</strong></p>
                         <p>This book is a wrecking ball.</p>
-                        <p>With scripture as evidence, it unmasks Yahweh's commands — genocide, slavery, child sacrifice — and the shocking truth that Paul, not Jesus, built Christianity.</p>
+                        <p>With scripture as evidence, it unmasks Yahweh's commands: - genocide, slavery, child sacrifice — and the shocking truth that Paul, not Jesus, built Christianity.</p>
                         <p>Our Father's identity has been distorted. As has ours. We'd been neutralized. Mission-accomplished. Potential-stifled.</p>
                         <p>This book splits the cracks wide open: no blood sacrifice required, no "original sin," no counterfeit god. Only the Father Jesus revealed … pure love without terms and conditions. United with us.</p>
                         <p><strong>Raw. Explosive. Liberating.</strong></p>
@@ -258,16 +469,32 @@
         <div class="book-section">
             <div class="book-content">
                 <div class="book-cover">
-                    <img src="otherbooks/framing-jesus-cover-final.jpg" alt="Framing Jesus book cover">
+                    <img src="reality-unveiled-cover.jpg" alt="Reality Unveiled book cover">
                 </div>
                 <div class="book-description">
-                    <div class="book-title">Framing Jesus: How the Church Hijacked the Real Jesus</div>
+                    <div class="book-title">Reality Unveiled: How Jesus Revealed You Are More Powerful Than You Ever Imagined</div>
                     <div class="book-text">
-                        <p><strong>The Jesus you know is a fabrication.</strong></p>
-                        <p>Not the man himself—but the story we've been told about him.</p>
+                        <p><strong>What if Jesus' most radical teaching wasn't about sin, but about your power to shape reality?</strong></p>
+                        <p>In Reality Unveiled, the author takes you beyond religion and into revelation ... where quantum physics, near-death experiences, and ancient wisdom converge to expose the truth: consciousness, not matter, is the foundation of existence.</p>
+                        <p>Discover how Jesus' hidden sayings align with cutting-edge science to reveal that "the kingdom of God is within you." You are not a helpless sinner awaiting rescue - you are a divine co-creator in a conscious universe, capable of manifesting healing, abundance, and transformation through awakened awareness.</p>
+                        <p>If you've begun questioning the old stories and are ready to uncover the breathtaking truth of who you really are, turn the page—and awaken to the universe Jesus knew all along.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book-section">
+            <div class="book-content">
+                <div class="book-cover">
+                    <img src="otherbooks/framing-jesus-cover-final.jpg" alt="Framing Jesus book cover">
+                </div>
+                    <div class="book-description">
+                    <div class="book-title">Framing Jesus: How Ancient Bible Changes Elevated Jesus Beyond Our Reach</div>
+                    <div class="book-text">
+                        <p>Some of what you know of Jesus is a fabrication. Not the man himself, but the story we've been told about him.</p>
                         <p>For centuries, the church has systematically reframed Jesus' radical message, turning a revolutionary teacher of love and liberation into a religious figurehead who supports the very systems he came to dismantle.</p>
-                        <p>This book peels back the layers of theological manipulation to reveal the authentic Jesus—the one who challenged religious authority, championed the marginalized, and taught that the kingdom of God is within you, not in a distant heaven.</p>
-                        <p><strong>Discover the Jesus the church doesn't want you to know.</strong></p>
+                        <p>This book peels back the layers of theological manipulation to reveal the authentic Jesus: the one who challenged religious authority, championed the marginalized, and taught that the kingdom of God is within you, not in a distant heaven.</p>
+                        <p><strong>Discover how parts of his identity were touched up for over 2000 years and why it matters.</strong></p>
                     </div>
                 </div>
             </div>
@@ -281,11 +508,11 @@
                 <div class="book-description">
                     <div class="book-title">101 Illustrated Bible Contradictions: And 12 Keys To Unlock The Truths These Reveal</div>
                     <div class="book-text">
-                        <p>What if the Bible's contradictions are clues — not merely errors?</p>
+                        <p>What if the Bible's contradictions are clues ... not merely errors?</p>
                         <p><strong>101 Illustrated Bible Contradictions</strong> exposes the hidden seams — verses that clash, timelines that twist, doctrines that collide.</p>
                         <p>But beneath the chaos lies some deeper truths.</p>
                         <p>These cracks reveal two competing images of God: the wrathful Yahweh of Moses versus the loving Father Jesus revealed. And a divided faith — torn between Jesus' Kingdom of Love and Paul's empire-friendly gospel.</p>
-                        <p>In this eye-opening guide, 12 Keys unlock what the contradictions show us — how Scripture was shaped, edited, and weaponized… and how the Truth still shines through. See the flaws. Find the freedom. Rediscover the Father.</p>
+                        <p>In this eye-opening guide, 12 Keys unlock what the contradictions show us: how Scripture was shaped, edited, and weaponized… and how the Truth still shines through. See the flaws. Find the freedom. Rediscover the Father.</p>
                     </div>
                 </div>
             </div>
@@ -300,8 +527,8 @@
                     <div class="book-title">Escape the Hell Myth: Rediscover The Teachings Of Jesus On Love</div>
                     <div class="book-text">
                         <p>What if the story of eternal torment isn't from Jesus at all?</p>
-                        <p>In <strong>Escape the Hell Myth</strong>, Ansilo Boff exposes the shocking truth: the doctrine of everlasting punishment was built on mistranslations, theological bias, and fear-based control—not on the words of Christ.</p>
-                        <p>Through deep linguistic study and bold spiritual insight, this book unpacks what Sheol, Hades, Gehenna, and aionios really meant in the original texts, how Jesus' teachings reveal a God of restoration, not retribution, why Yahweh's violent commands contradict the loving Father Jesus revealed, and the breathtaking hope of universal reconciliation—a divine plan to heal all creation.</p>
+                        <p>In <strong>Escape the Hell Myth</strong>, Ansilo Boff exposes the shocking truth: the doctrine of everlasting punishment was built on mistranslations, theological bias, and fear-based control. Not on the words of Christ.</p>
+                        <p>Through deep linguistic study and bold spiritual insight, this book unpacks what Sheol, Hades, Gehenna, and aionios really meant in the original texts, how Jesus' teachings reveal a God of restoration, not retribution, why Yahweh's violent commands contradict the loving Father Jesus revealed, and the breathtaking hope of universal reconciliation: a divine plan to heal all creation.</p>
                         <p>If you've ever questioned how a loving God could condemn souls to eternal fire, this book will help you escape the lie and rediscover the liberating message of Jesus. <strong>Jesus never taught Hell. He revealed a Father who restores, not destroys.</strong></p>
                     </div>
                 </div>
@@ -476,7 +703,7 @@
         <div class="book-section">
             <div class="book-content">
                 <div class="book-cover">
-                    <img src="b4 mum-daughter.jpg" alt="Whispers to My Unborn Daughter – A Mum's Poetic Life Jacket book cover">
+                    <img src="b4_mum-daughter.jpg" alt="Whispers to My Unborn Daughter – A Mum's Poetic Life Jacket book cover">
                 </div>
                 <div class="book-description">
                     <div class="book-title">Whispers to My Unborn Daughter – A Mum's Poetic Life Jacket</div>

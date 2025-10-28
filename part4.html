@@ -33,7 +33,7 @@
         
         .container {
             text-align: center;
-            padding: 2rem;
+            padding: 0.5rem 2rem;
             max-width: 800px;
         }
         
@@ -83,6 +83,17 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
+        .intro-text {
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            text-align: justify;
+        }
+        
         @media (max-width: 768px) {
             .part-number {
                 font-size: 6rem;
@@ -90,6 +101,11 @@
             
             .subtitle {
                 font-size: 1.5rem;
+            }
+            
+            .intro-text {
+                font-size: 1rem;
+                padding: 1rem;
             }
             
             .navigation-buttons {
@@ -102,12 +118,155 @@
                 text-align: center;
             }
         }
+
+        /* Print-specific styles for PDF generation */
+        @media print {
+            @page {
+                size: 6in 9in; /* Paperback and hardcover dimensions */
+                margin: 0.75in;
+            }
+            
+            body {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 11pt;
+                line-height: 1.6;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            
+            /* Hide navigation */
+            .navigation-buttons,
+            nav,
+            .navbar,
+            .menu,
+            .breadcrumb,
+            .pagination,
+            .nav-button,
+            [class*="nav"],
+            [class*="menu"],
+            [class*="breadcrumb"] {
+                display: none !important;
+            }
+            
+            /* Preserve content styling */
+            .bible-quote,
+            .callout,
+            .callout-quote,
+            .highlight {
+                display: block !important;
+            }
+            
+            /* Ensure images print properly */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+                page-break-inside: avoid;
+            }
+            
+            /* Make all quote classes black for printing */
+            .chapter-quote,
+            .bible-reference,
+            .callout-quote,
+            .callout-quote * {
+                color: #000 !important;
+            }
+            
+            /* Force all elements with inline color to be black when printing */
+            [style*="color"] {
+                color: #000 !important;
+            }
+            
+            /* Typography */
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                color: #000;
+            }
+            
+            h1 {
+                font-size: 20pt;
+                margin-bottom: 0.75rem;
+            }
+            
+            h2 {
+                font-size: 16pt;
+                margin-top: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            p, li {
+                page-break-inside: auto;
+                orphans: 2;
+                widows: 2;
+                margin-bottom: 0.5rem;
+            }
+            
+            /* Allow paragraphs inside callouts to break more freely */
+            .callout p,
+            .callout-quote p {
+                page-break-inside: auto;
+                orphans: 1;
+                widows: 1;
+            }
+            
+            /* Page breaks */
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .no-break {
+                page-break-inside: avoid;
+            }
+            
+            .chapter {
+                page-break-before: always;
+            }
+            
+            /* Allow callouts and info-boxes to break across pages */
+            .callout,
+            .callout-quote,
+            .info-box {
+                page-break-inside: auto;
+            }
+            
+            .bullet-points,
+            ul, ol {
+                page-break-inside: auto;
+            }
+            
+            /* Reduce margins on callout titles */
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            /* Reduce margins on callout-quotes */
+            .callout-quote {
+                margin: 1rem 0 !important;
+                padding: 1rem !important;
+            }
+            
+            /* Links */
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 class="part-number">Part 4</h1>
         <h2 class="subtitle">Practical Guide to Manifesting Miracles</h2>
+        
+        <p class="intro-text">Alright, so you now know you're divine consciousness in human form. Big whoop. The question is: <strong>what the hell are you going to <i>do</i> with that knowledge?</strong> Because knowing you're infinite and still living like you're small and broken is just frustrating. This final section is where we get our hands dirty. We'll start with how to actually connect with that higher consciousness (the theory), then we'll move into the real deal: <b>the 6-Step Prayer Manual</b> that transforms all this heady philosophy into daily practice. This is where miracles stop being special events and become the natural way you operate when you remember who you actually are.</p>
         
         <div class="navigation-buttons">
             <a href="chapter8.html" class="nav-button">Previous: Chapter 8</a>

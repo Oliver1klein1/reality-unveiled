@@ -1,0 +1,404 @@
+# EPUB Conversion Rules for Book Publishing
+
+## Overview
+These rules ensure consistent, high-quality EPUB generation from HTML source files while preserving all styling, classes, and formatting. **Includes Amazon KDP compliance requirements.**
+
+## EPUB Conversion Workflow
+
+### 1. Always Use Enhanced Conversion Script
+When converting HTML files to EPUB format, ALWAYS use the enhanced conversion script:
+```bash
+python create_epub_enhanced.py
+```
+
+**Never use basic conversion scripts** that strip CSS classes or inline styles.
+
+### 2. Mandatory Verification Step
+After conversion, ALWAYS run verification to ensure content integrity:
+```bash
+python verify_epub_conversion.py
+```
+
+This script checks:
+- CSS class preservation
+- Inline style preservation  
+- Image count matching
+- Bible quote formatting
+- Navigation element removal (appropriate for EPUB)
+
+### 3. Final EPUB Creation
+Only create the final EPUB after verification passes:
+```bash
+python create_final_epub.py
+```
+
+## Amazon KDP Compliance Requirements
+
+### 1. Mimetype File Ordering
+**CRITICAL**: The `mimetype` file MUST be the first file in the EPUB archive for Amazon KDP compliance.
+
+```bash
+# Verify mimetype is first
+python create_final_epub.py
+# Script automatically ensures mimetype is first
+```
+
+### 2. Spine Order Prevention (CRITICAL)
+**MAJOR ISSUE**: EPUB readers (especially Calibre) will alphabetically sort the spine, causing books to open to wrong pages (e.g., Appendix instead of Introduction).
+
+**SOLUTION**: All EPUB creation scripts MUST include `fix_spine_order()` function that explicitly sets the correct reading order:
+
+```python
+def fix_spine_order():
+    """Prevent alphabetical sorting of spine items"""
+    correct_order = [
+        "cover",
+        "titlepage", 
+        "toc",           # Table of Contents
+        "introduction",
+        "part1",
+        "chapter1",
+        "chapter2",
+        # ... rest in logical reading order
+        "conclusion",
+        "appendix1",
+        "appendix2"
+    ]
+    # Force spine order to match correct_order
+```
+
+### 3. Duplicate ID Prevention
+**ERROR**: "E27012: Item or process id already used" occurs when multiple images have similar base names.
+
+**SOLUTION**: Generate unique IDs for all items:
+```python
+def generate_unique_id(filename):
+    """Generate unique ID, handling similar base names"""
+    base_name = os.path.splitext(filename)[0]
+    # Handle cases like framing-jesus-cover1.jpg and framing-jesus-cover1.png
+    return base_name.replace('-', '_').replace(' ', '_')
+```
+
+### 4. Table of Contents Management
+**ISSUE**: Duplicate TOCs appearing at end of book in Kindle Previewer.
+
+**SOLUTION**: 
+- Create `toc.xhtml` as a proper content page (not navigation)
+- Include it in `nav.xhtml` navigation structure
+- Ensure `toc.ncx` references it correctly
+- Remove any orphaned TOC references
+
+### 5. Kindle Previewer Compatibility
+**MAJOR ISSUES**: Kindle Previewer has poor CSS rendering capabilities.
+
+**SOLUTIONS**:
+- **Avoid complex CSS**: Use simple, bulletproof styling
+- **No flexbox/grid**: Use basic HTML structure with minimal CSS
+- **Font size control**: Use `!important` declarations for Kindle
+- **Image sizing**: Constrain images with `max-width` and `max-height`
+- **Part pages**: Use simple colors instead of gradients
+- **Navigation**: Use "← Back" instead of complex navigation text
+
+### 2. Required Metadata
+Before creating EPUB, ensure ALL metadata is provided:
+
+#### Essential Metadata (Prompt if Missing)
+- **Title**: Main book title
+- **Subtitle**: Book subtitle (if applicable)
+- **Author**: Author name(s)
+- **Publisher**: Publisher name
+- **Publication Date**: Year of publication
+- **Cover Image**: Path to cover image file
+
+#### Optional Metadata (Prompt if Missing)
+- **Tags/Keywords**: Comma-separated keywords for discoverability
+- **Description**: Book description/summary
+- **Language**: Book language (default: en)
+- **ISBN**: ISBN number (if available)
+
+### 3. Cover Image Requirements
+- **Format**: JPG or PNG
+- **Resolution**: Minimum 1000px on shortest side
+- **Aspect Ratio**: 1.6:1 (recommended for Amazon KDP)
+- **File Size**: Under 5MB
+- **Path**: Must be accessible from project directory
+
+## Required Scripts for Every Book Project
+
+### Core Scripts (Must Exist)
+1. **`create_epub_enhanced.py`** - Enhanced conversion with style preservation
+2. **`verify_epub_conversion.py`** - Automatic verification of HTML vs XHTML
+3. **`create_final_epub.py`** - Final EPUB creation with proper structure
+4. **`create_kdp_epub.py`** - Amazon KDP-compliant EPUB creation
+
+### Script Requirements
+- All scripts must preserve CSS classes and inline styles
+- Navigation elements should be removed for EPUB (but preserved in HTML)
+- Image paths must be converted to EPUB format (`../Images/filename`)
+- XHTML structure must be valid and EPUB-compliant
+- **Mimetype file MUST be first** in final EPUB archive
+- **All metadata MUST be included** in content.opf
+- **MUST include `fix_spine_order()`** to prevent alphabetical sorting
+- **MUST handle duplicate IDs** for images with similar names
+- **MUST create proper TOC structure** to prevent duplicates
+
+## Metadata Collection Process
+
+### Before EPUB Creation
+1. **Check for metadata file**: Look for `book_metadata.json` or `metadata.txt`
+2. **Prompt for missing metadata**:
+   ```
+   Missing metadata detected. Please provide:
+   - Title: [Book Title]
+   - Author: [Author Name]
+   - Publisher: [Publisher Name]
+   - Publication Date: [Year]
+   - Cover Image Path: [path/to/cover.jpg]
+   - Tags: [comma,separated,keywords]
+   ```
+
+### Metadata File Format
+Create `book_metadata.json`:
+```json
+{
+  "title": "Book Title",
+  "subtitle": "Book Subtitle",
+  "author": "Author Name",
+  "publisher": "Publisher Name",
+  "publication_date": "2025",
+  "cover_image": "path/to/cover.jpg",
+  "tags": "keyword1, keyword2, keyword3",
+  "description": "Book description",
+  "language": "en",
+  "isbn": "978-1234567890"
+}
+```
+
+## HTML File Standards
+
+### Required Structure
+- All HTML files must have proper `<head>` sections with CSS
+- Bible quotes must use `class="bible-quote"` for proper styling
+- Images must have proper `src` attributes
+- Navigation elements should use `class="navigation"` and `class="nav-link"`
+
+### CSS Class Standards
+- **Bible quotes**: Always use `class="bible-quote"`
+- **Callouts/Highlights**: Use descriptive class names
+- **Navigation**: Use `class="navigation"` and `class="nav-link"`
+- **Styling**: Preserve all inline styles and CSS classes
+
+## EPUB Directory Structure
+```
+epub/
+├── META-INF/
+│   └── container.xml
+├── mimetype                    ← MUST BE FIRST FILE
+└── OEBPS/
+    ├── content.opf            ← Contains all metadata
+    ├── nav.xhtml
+    ├── toc.ncx
+    ├── Styles/
+    │   └── style.css
+    ├── Images/
+    │   ├── cover.jpg          ← Cover image
+    │   └── [all image files]
+    └── Text/
+        └── [all .xhtml files]
+```
+
+## Quality Assurance Checklist
+
+### Before EPUB Creation
+- [ ] All HTML files have proper CSS classes
+- [ ] Bible quotes use `bible-quote` class
+- [ ] Images are properly referenced
+- [ ] Navigation elements are present in HTML (will be removed for EPUB)
+- [ ] **All metadata is provided** (title, author, publisher, etc.)
+- [ ] **Cover image exists and meets requirements**
+- [ ] **Metadata file created** (`book_metadata.json`)
+
+### After Conversion
+- [ ] Verification script shows "Perfect matches" for all files
+- [ ] No missing CSS classes in XHTML files
+- [ ] Inline styles preserved (accounting for navigation removal)
+- [ ] Image counts match between HTML and XHTML
+- [ ] Bible quote classes preserved
+
+### Final EPUB
+- [ ] EPUB structure verification passes
+- [ ] All required files present (mimetype, container.xml, etc.)
+- [ ] **Mimetype file is FIRST** in archive
+- [ ] **All metadata included** in content.opf
+- [ ] **Cover image properly linked**
+- [ ] Images properly linked
+- [ ] CSS styling renders correctly in EPUB readers
+
+### Kindle Previewer Testing (MANDATORY)
+- [ ] **Book opens to correct page** (not Appendix)
+- [ ] **No duplicate Table of Contents** at end
+- [ ] **Part titles display correctly** (not missing)
+- [ ] **Verse quotes properly sized** (not too large)
+- [ ] **Tables render correctly** (not scrambled)
+- [ ] **Book cover images sized appropriately** (not full-page)
+- [ ] **Navigation links work** and are simple ("← Back")
+- [ ] **No conversion errors** in Kindle Previewer log
+- [ ] **All CSS classes preserved** and functional
+
+## Error Handling
+
+### If Verification Fails
+1. **Do NOT create final EPUB** until issues are resolved
+2. Check specific error messages from verification script
+3. Compare HTML source with XHTML output manually
+4. Fix conversion script if needed
+5. Re-run conversion and verification
+
+### If Metadata Missing
+1. **Prompt user for missing information**
+2. **Create metadata file** with provided information
+3. **Re-run EPUB creation** with complete metadata
+
+### Common Issues
+- **Missing CSS classes**: Check conversion script preserves all classes
+- **Inline style mismatches**: Usually navigation elements (expected)
+- **Image path issues**: Ensure proper EPUB path conversion
+- **Bible quote styling**: Verify `bible-quote` class is preserved
+- **Missing metadata**: Prompt for required information
+- **Cover image not found**: Verify image path and file exists
+
+### Kindle-Specific Issues & Solutions
+
+#### 1. EPUB Opens to Wrong Page (Appendix instead of Introduction)
+**CAUSE**: Alphabetical sorting of spine items
+**SOLUTION**: Implement `fix_spine_order()` in all EPUB creation scripts
+
+#### 2. "E27012: Item or process id already used" Error
+**CAUSE**: Duplicate IDs for images with similar names
+**SOLUTION**: Generate unique IDs for all manifest items
+
+#### 3. Duplicate Table of Contents at End of Book
+**CAUSE**: Orphaned TOC references or missing nav.xhtml entries
+**SOLUTION**: 
+- Create proper `toc.xhtml` content page
+- Include in `nav.xhtml` navigation
+- Update `toc.ncx` with correct playOrder
+
+#### 4. Large Verse Quotes on Part Pages
+**CAUSE**: Kindle Previewer doesn't respect CSS font-size
+**SOLUTION**: Use `!important` declarations and reduce font sizes
+
+#### 5. Scrambled Tables in Kindle Previewer
+**CAUSE**: Complex CSS (flexbox/grid) not supported
+**SOLUTION**: Use simple HTML table structure with basic CSS
+
+#### 6. Full-Page Book Cover Images
+**CAUSE**: No size constraints for images
+**SOLUTION**: Add `max-width` and `max-height` with `!important`
+
+#### 7. Part Titles Not Displaying
+**CAUSE**: Complex gradient CSS not rendering
+**SOLUTION**: Use simple solid colors and `display: block !important`
+
+#### 8. Navigation Links Too Complex
+**CAUSE**: Long navigation text causes issues
+**SOLUTION**: Use simple "← Back" instead of "← Cover Introduction"
+
+## File Naming Conventions
+
+### HTML Files
+- `introduction.html`
+- `chapter1.html`, `chapter2.html`, etc.
+- `part1.html`, `part2.html`, etc.
+- `conclusion.html`
+- `appendix1.html`, `appendix2.html`, etc.
+
+### EPUB Files
+- `[BookName]_Final.epub` - Final EPUB file
+- `[BookName]_KDP.epub` - Amazon KDP-compliant EPUB
+- `epub/` - Source directory for EPUB creation
+
+### Metadata Files
+- `book_metadata.json` - Complete book metadata
+- `metadata.txt` - Alternative metadata format
+
+## Automation Commands
+
+### Complete EPUB Workflow
+```bash
+# 1. Check metadata completeness
+python check_metadata.py
+
+# 2. Convert HTML to XHTML with style preservation
+python create_epub_enhanced.py
+
+# 3. Verify conversion integrity
+python verify_epub_conversion.py
+
+# 4. Create final EPUB (only if verification passes)
+python create_final_epub.py
+
+# 5. Create Amazon KDP-compliant EPUB
+python create_kdp_epub.py
+```
+
+### Quick Check
+```bash
+# Verify current EPUB matches HTML sources
+python verify_epub_conversion.py
+
+# Check metadata completeness
+python check_metadata.py
+```
+
+## Best Practices
+
+1. **Always verify before finalizing** - Never skip the verification step
+2. **Preserve all styling** - EPUB should look identical to HTML
+3. **Test in multiple readers** - Verify styling works across devices
+4. **Keep scripts updated** - Ensure scripts work with latest HTML changes
+5. **Document any customizations** - Note any project-specific modifications
+6. **Always include complete metadata** - Required for professional publishing
+7. **Verify Amazon KDP compliance** - Check mimetype ordering and metadata
+
+## Troubleshooting
+
+### Script Not Found
+- Ensure all four scripts exist in project root
+- Check file permissions allow execution
+- Verify Python environment is working
+
+### Conversion Issues
+- Check HTML files are valid
+- Ensure CSS classes are properly formatted
+- Verify image files exist and are accessible
+
+### Verification Failures
+- Review specific error messages
+- Compare HTML and XHTML files manually
+- Check for navigation elements (should be removed)
+- Verify image counts match
+
+### Metadata Issues
+- Check `book_metadata.json` exists and is valid
+- Verify all required fields are provided
+- Ensure cover image path is correct
+- Check cover image meets size requirements
+
+## Success Criteria
+- ✅ All files pass verification with "Perfect matches"
+- ✅ Bible quotes display with proper styling
+- ✅ All CSS classes and inline styles preserved
+- ✅ Images properly linked and displayed
+- ✅ EPUB structure meets standards
+- ✅ **Mimetype file is first** in archive
+- ✅ **All metadata included** in content.opf
+- ✅ **Cover image properly linked**
+- ✅ **Amazon KDP compliance verified**
+- ✅ **Kindle Previewer testing passes** (no errors, proper rendering)
+- ✅ **Book opens to correct page** (not alphabetically sorted)
+- ✅ **No duplicate Table of Contents**
+- ✅ **All Kindle-specific issues resolved**
+- ✅ Final EPUB file created successfully
+
+Remember: **Quality over speed** - Always verify before finalizing EPUB files. **Amazon KDP compliance is mandatory** for professional publishing. **Kindle Previewer testing is essential** - don't skip it!

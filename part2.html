@@ -20,45 +20,47 @@
         body {
             font-family: 'Merriweather', serif;
             color: var(--dark-text);
+            line-height: 1.8;
             background-color: var(--light-bg);
             min-height: 100vh;
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin: 0;
-            padding: 0;
         }
         
-        .divider-container {
+        .container {
             text-align: center;
-            padding: 2rem;
+            padding: 0.5rem 2rem;
             max-width: 800px;
-            margin: 0 auto;
         }
         
         .part-number {
             font-family: 'Playfair Display', serif;
             font-size: 8rem;
+            font-weight: 700;
             color: var(--primary-color);
-            margin: 0;
             line-height: 1;
+            margin: 0;
             opacity: 0.8;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         
-        .part-title {
+        .subtitle {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--primary-color);
-            margin-top: 1rem;
-            margin-bottom: 3rem;
+            margin: 1rem 0 3rem;
+            font-weight: 400;
         }
         
         .navigation-buttons {
             display: flex;
             justify-content: space-between;
             margin-top: 3rem;
-            padding: 1rem 0;
+            padding-top: 2rem;
             border-top: 1px solid var(--secondary-color);
             width: 100%;
         }
@@ -81,21 +83,190 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
+        .intro-text {
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            text-align: justify;
+        }
+        
         @media (max-width: 768px) {
             .part-number {
                 font-size: 6rem;
             }
             
-            .part-title {
-                font-size: 2rem;
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .intro-text {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+            
+            .navigation-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Print-specific styles for PDF generation */
+        @media print {
+            @page {
+                size: 6in 9in; /* Paperback and hardcover dimensions */
+                margin: 0.75in;
+            }
+            
+            body {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 11pt;
+                line-height: 1.6;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            
+            /* Hide navigation */
+            .navigation-buttons,
+            nav,
+            .navbar,
+            .menu,
+            .breadcrumb,
+            .pagination,
+            .nav-button,
+            [class*="nav"],
+            [class*="menu"],
+            [class*="breadcrumb"] {
+                display: none !important;
+            }
+            
+            /* Preserve content styling */
+            .bible-quote,
+            .callout,
+            .callout-quote,
+            .highlight {
+                display: block !important;
+            }
+            
+            /* Ensure images print properly */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+                page-break-inside: avoid;
+            }
+            
+            /* Make all quote classes black for printing */
+            .chapter-quote,
+            .bible-reference,
+            .callout-quote,
+            .callout-quote * {
+                color: #000 !important;
+            }
+            
+            /* Force all elements with inline color to be black when printing */
+            [style*="color"] {
+                color: #000 !important;
+            }
+            
+            /* Typography */
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                color: #000;
+            }
+            
+            h1 {
+                font-size: 20pt;
+                margin-bottom: 0.75rem;
+            }
+            
+            h2 {
+                font-size: 16pt;
+                margin-top: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            p, li {
+                page-break-inside: auto;
+                orphans: 2;
+                widows: 2;
+                margin-bottom: 0.5rem;
+            }
+            
+            /* Allow paragraphs inside callouts to break more freely */
+            .callout p,
+            .callout-quote p {
+                page-break-inside: auto;
+                orphans: 1;
+                widows: 1;
+            }
+            
+            /* Page breaks */
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .no-break {
+                page-break-inside: avoid;
+            }
+            
+            .chapter {
+                page-break-before: always;
+            }
+            
+            /* Allow callouts and info-boxes to break across pages */
+            .callout,
+            .callout-quote,
+            .info-box {
+                page-break-inside: auto;
+            }
+            
+            .bullet-points,
+            ul, ol {
+                page-break-inside: auto;
+            }
+            
+            /* Reduce margins on callout titles */
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            /* Reduce margins on callout-quotes */
+            .callout-quote {
+                margin: 1rem 0 !important;
+                padding: 1rem !important;
+            }
+            
+            /* Links */
+            a {
+                color: #000;
+                text-decoration: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="divider-container">
+    <div class="container">
         <h1 class="part-number">Part 2</h1>
-        <h2 class="part-title">Evidence for Non-Local Consciousness</h2>
+        <h2 class="subtitle">Evidence for Non-Local Consciousness</h2>
+        
+        <p class="intro-text">Here's where things get <i>really</i> interesting. Now that we've blown up the materialist model, let's look at what the evidence is actually telling us about where consciousness lives. People who've been <b>clinically dead</b> are coming back with stories that would make physicists check their math. Kids are remembering lives they've never lived. Memories are showing up in places they shouldn't exist ... like in someone else's transplanted heart. <strong>The data keeps pointing to one uncomfortable truth: your consciousness isn't locked in your skull.</strong> It extends beyond space, beyond time, and apparently beyond death itself.</p>
         
         <div class="navigation-buttons">
             <a href="chapter3.html" class="nav-button">Previous: Chapter 3</a>

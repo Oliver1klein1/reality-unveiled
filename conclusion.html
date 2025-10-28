@@ -214,6 +214,147 @@
             padding-top: 2rem;
             border-top: 1px solid var(--secondary-color);
         }
+
+        /* Print-specific styles for PDF generation */
+        @media print {
+            @page {
+                size: 6in 9in; /* Paperback and hardcover dimensions */
+                margin: 0.75in;
+            }
+            
+            body {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 11pt;
+                line-height: 1.6;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            
+            /* Hide navigation */
+            .navigation-buttons,
+            nav,
+            .navbar,
+            .menu,
+            .breadcrumb,
+            .pagination,
+            .nav-button,
+            [class*="nav"],
+            [class*="menu"],
+            [class*="breadcrumb"] {
+                display: none !important;
+            }
+            
+            /* Preserve content styling */
+            .bible-quote,
+            .callout,
+            .callout-quote,
+            .highlight {
+                display: block !important;
+            }
+            
+            /* Ensure images print properly */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+                page-break-inside: avoid;
+            }
+            
+            /* Make all quote classes black for printing */
+            .chapter-quote,
+            .bible-reference,
+            .callout-quote,
+            .callout-quote * {
+                color: #000 !important;
+            }
+            
+            /* Force all elements with inline color to be black when printing */
+            [style*="color"] {
+                color: #000 !important;
+            }
+            
+            /* Typography */
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                color: #000;
+            }
+            
+            h1 {
+                font-size: 20pt;
+                margin-bottom: 0.75rem;
+            }
+            
+            h2 {
+                font-size: 16pt;
+                margin-top: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            p, li {
+                page-break-inside: auto;
+                orphans: 2;
+                widows: 2;
+                margin-bottom: 0.5rem;
+            }
+            
+            /* Allow paragraphs inside callouts to break more freely */
+            .callout p,
+            .callout-quote p {
+                page-break-inside: auto;
+                orphans: 1;
+                widows: 1;
+            }
+            
+            /* Page breaks */
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .no-break {
+                page-break-inside: avoid;
+            }
+            
+            .chapter {
+                page-break-before: always;
+            }
+            
+            /* Allow callouts and info-boxes to break across pages */
+            .callout,
+            .callout-quote,
+            .info-box {
+                page-break-inside: auto;
+            }
+            
+            .bullet-points,
+            ul, ol {
+                page-break-inside: auto;
+            }
+            
+            /* Reduce margins on callout titles */
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            /* Reduce margins on callout-quotes */
+            .callout-quote {
+                margin: 1rem 0 !important;
+                padding: 1rem !important;
+            }
+            
+            /* Links */
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -229,18 +370,18 @@
             <span class="bible-reference">— Luke 17:20-21</span>
         </div>
         
-        <p>Let that sink in for a moment. Jesus wasn't directing you to look <em>out there</em> for God's kingdom—not in temples, not in religious institutions, not even in heaven after you die. He was pointing you <strong><em>inward</em></strong>, to the infinite consciousness that's been humming quietly beneath your thoughts this entire time. The transformation he invited wasn't about <strong>believing harder</strong> or <strong>following rules more perfectly</strong>. It was about a complete <strong><em>shift in how you see</em></strong>—from the ego's cramped, fearful perspective to the expansive awareness of the <strong>kingdom already alive within you</strong>.</p>
+        <p>The journey we've taken together through quantum physics, near-death research, reincarnation studies, and consciousness research culminates in one <strong><em>inescapable synthesis</em></strong>: every thread points to the same destination. Whether you call it the Field, Source Energy, the Father, or your Higher Self—the labels matter less than recognizing that <strong>you're not a temporary visitor in reality, you're an integral expression of it</strong>. The transformation Jesus invited wasn't about joining a religion or achieving moral perfection. It was about <strong>ceasing to operate as if you're small and separate</strong>, and instead recognizing yourself as consciousness itself, <i>temporarily focused through this specific human lens</i>, capable of access to dimensions of awareness that make miracles look like Tuesday.</p>
         
         <h2>What Jesus Actually Said (And What It Really Means)</h2>
         
         <p>Let's revisit the statements that should have <strong>changed everything</strong>—the ones that got buried, explained away, or softened into something more comfortable:</p>
         
         <ul class="bullet-points">
-            <li><strong>"You are gods"</strong> (John 10:34) - Not poetic exaggeration. <strong><em>Literal truth</em></strong> about your nature.</li>
-            <li><strong>"The Father and I are one"</strong> (John 10:30) - And then he said <em>you're in him and he's in you</em>. <strong>Same oneness. Same connection.</strong></li>
-            <li><strong>"The kingdom of God is within you"</strong> (Luke 17:21) - No apologies for repeating this one, yet again. Stop searching externally. <strong><em>Everything you need is already inside.</em></strong></li>
-            <li><strong>"You will do greater works than these"</strong> (John 14:12) - He wasn't being humble. He was being <strong><em>prophetic</em></strong> about your potential.</li>
+            <li><strong>"You are gods"</strong> (John 10:34) - The declaration that levels the playing field between human and divine.</li>
+            <li><strong>"The Father and I are one"</strong> (John 10:30) - A claim he then extended to include you: <em>"I am in my Father, and you are in me, and I am in you"</em> (John 14:20).</li>
+            <li><strong>"You will do greater works than these"</strong> (John 14:12) - Not encouragement. <strong><em>Operational truth</em></strong> about your actual capacity.</li>
             <li><strong>"Be perfect as your heavenly Father is perfect"</strong> (Matthew 5:48) - He wouldn't command the <strong>impossible</strong>. He was revealing the <strong><em>achievable</em></strong>.</li>
+            <li><strong>"The kingdom of God is within you"</strong> (Luke 17:21) - Not a future promise. A present tense reality waiting to be recognized.</li>
         </ul>
         
         <p>These aren't feel-good inspirational quotes to frame on your wall. They're <strong><em>revolutionary declarations</em></strong> about who you are and what you're capable of. They point to a spirituality so much <strong>more empowering</strong> than what's been handed to you by institutions that benefit from your feeling small, broken, and dependent. Jesus didn't come to start another religion. He came to <strong><em>wake you up</em></strong> from the dream that you're anything less than divine.</p>
@@ -310,9 +451,9 @@
         
         <p>Here's what I want you to hear as we part ways: <strong>You are more powerful than you've been led to believe.</strong> You are <strong>more divine</strong> than you've been taught. You are more <strong><em>loved, more capable, more infinite</em></strong> than any religious system has dared to tell you.</p>
         
-        <p>And when you awaken to this truth—when you start <strong>living from it</strong> rather than just thinking about it—you become part of the transformation Jesus envisioned. Not heaven someday, somewhere else. <strong>Heaven on earth.</strong> The kingdom made manifest through <strong><em>awakened consciousness</em></strong>. Through <strong>you</strong>.</p>
+        <p>And when you awaken to this truth—when you start <strong>living from it</strong> rather than just thinking about it—you become part of the transformation Jesus envisioned. Not heaven someday, somewhere else. <strong>Heaven on earth.</strong> Made manifest through <strong><em>awakened consciousness</em></strong>. Through <strong>you</strong>.</p>
         
-        <p>This is the actual good news Jesus taught—not that you need rescue from some external savior, but that <strong>the kingdom is already within you</strong>, patiently waiting to be recognized, embraced, and expressed through your unique presence in this world.</p>
+        <p>This is the actual good news Jesus taught—not that you need rescue from some external savior, but that your true nature has been <strong><em>hidden in plain sight</em></strong>, woven into the fabric of your very being, patiently waiting for you to stop searching externally and start recognizing it <i>within</i>.</p>
         
         <p><strong>"You are gods."</strong></p>
         

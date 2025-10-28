@@ -113,7 +113,7 @@
 
         .section-header h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
             position: relative;
@@ -132,7 +132,7 @@
         }
 
         .section-header p {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             color: #666;
             max-width: 600px;
             margin: 0 auto;
@@ -177,7 +177,7 @@
 
         .card h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
         }
@@ -224,7 +224,7 @@
 
         .step h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
         }
@@ -261,14 +261,14 @@
         }
 
         p {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             margin-bottom: 1.5rem;
             color: #444;
             text-align: justify;
         }
 
         .lead {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 300;
             color: #666;
             line-height: 1.8;
@@ -386,6 +386,287 @@
                 font-size: 1.2rem;
             }
         }
+        
+        .chapter-summary {
+            background: #e6f3ff;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            color: #2d3748;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .chapter-summary-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .chapter-summary-title i {
+            font-size: 2rem;
+        }
+        
+        .chapter-summary-content {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .chapter-summary-content strong {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .chapter-summary {
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+            
+            .chapter-summary-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Print-specific styles for PDF generation */
+        @media print {
+            @page {
+                size: 6in 9in; /* Paperback and hardcover dimensions */
+                margin: 0.75in;
+            }
+            
+            body {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 11pt;
+                line-height: 1.6;
+                color: #000;
+                background: #fff !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            
+            .card {
+                max-width: 100% !important;
+                width: 100% !important;
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+            
+            /* Hide navigation */
+            .navigation-buttons,
+            nav,
+            .navbar,
+            .menu,
+            .breadcrumb,
+            .pagination,
+            .nav-button,
+            [class*="nav"],
+            [class*="menu"],
+            [class*="breadcrumb"],
+            .no-print {
+                display: none !important;
+            }
+            
+            /* Preserve content styling */
+            .bible-quote,
+            .callout,
+            .callout-quote,
+            .highlight {
+                display: block !important;
+            }
+            
+            /* Ensure images print properly */
+            img {
+                width: 80% !important;
+                max-width: 80% !important;
+                height: auto !important;
+                page-break-inside: avoid;
+                margin: 0 auto;
+                display: block;
+            }
+            
+            /* Make all quote classes black for printing */
+            .chapter-quote,
+            .bible-reference,
+            .callout-quote,
+            .callout-quote * {
+                color: #000 !important;
+            }
+            
+            /* Force ALL text to be black when printing */
+            * {
+                color: #000 !important;
+            }
+            
+            /* Allow specific exceptions if needed */
+            [style*="color"] {
+                color: #000 !important;
+            }
+            
+            /* Force all p, h1, h2, h3, h4, h5, h6, span, div, em, strong to be black */
+            p, h1, h2, h3, h4, h5, h6, span, div, em, strong, i, b {
+                color: #000 !important;
+            }
+            
+            /* Force inline styles to be black */
+            [style*="rgba"],
+            [style*="rgb"] {
+                color: #000 !important;
+            }
+            
+            /* Typography */
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                color: #000;
+            }
+            
+            /* Reduce size of introductory text in print */
+            p[style*="font-size: 1.3rem"] {
+                font-size: 10pt !important;
+            }
+            
+            /* Keep specific quote text at readable size when printing */
+            p[style*="font-size: 1.2rem"] {
+                font-size: 12pt !important;
+            }
+            
+            /* Prevent page break after "Doorways to Remembrance" */
+            h2#doorways-header {
+                page-break-after: avoid !important;
+            }
+            
+            /* Prevent page break before the section containing "Doorways to Remembrance" */
+            section:has(h2#doorways-header) {
+                page-break-before: avoid !important;
+            }
+            
+            /* Prevent page break on the section-header itself */
+            .section-header:has(h2#doorways-header) {
+                page-break-before: avoid !important;
+                page-break-after: avoid !important;
+            }
+            
+            /* Keep the paragraph under the heading with it */
+            h2#doorways-header + p {
+                page-break-before: avoid !important;
+            }
+            
+            h1 {
+                font-size: 20pt;
+                margin-bottom: 0.75rem;
+            }
+            
+            h2 {
+                font-size: 16pt;
+                margin-top: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            /* Step headings should be larger than subheadings in print */
+            .step h3 {
+                font-size: 18pt !important;
+            }
+            
+            /* Subheadings within steps should be smaller */
+            .step h4 {
+                font-size: 14pt !important;
+            }
+            
+            h3 {
+                font-size: 16pt;
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            h4 {
+                font-size: 12pt;
+                margin-top: 0.75rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            p, li {
+                page-break-inside: auto;
+                orphans: 2;
+                widows: 2;
+                margin-bottom: 0.5rem;
+            }
+            
+            /* Allow paragraphs inside callouts to break more freely */
+            .callout p,
+            .callout-quote p {
+                page-break-inside: auto;
+                orphans: 1;
+                widows: 1;
+            }
+            
+            /* Page breaks */
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .no-break {
+                page-break-inside: avoid;
+            }
+            
+            .chapter {
+                page-break-before: always;
+            }
+            
+            /* Light background for chapter title card when printing */
+            .chapter-title-card {
+                background: #f5f5f5 !important;
+                color: #000 !important;
+                border: 1px solid #ddd !important;
+            }
+            
+            .chapter-title-section h1,
+            .chapter-title-section .subtitle {
+                color: #000 !important;
+            }
+            
+            /* Allow callouts and info-boxes to break across pages */
+            .callout,
+            .callout-quote,
+            .info-box {
+                page-break-inside: auto;
+            }
+            
+            .bullet-points,
+            ul, ol {
+                page-break-inside: auto;
+            }
+            
+            /* Reduce margins on callout titles */
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            /* Reduce margins on callout-quotes */
+            .callout-quote {
+                margin: 1rem 0 !important;
+                padding: 1rem !important;
+            }
+            
+            /* Links */
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -404,7 +685,7 @@
     <section style="background: white; padding: 2rem 0;">
         <div class="container">
             <div class="card">
-                <p>This Guide was written as a <em>free downloadable companion</em> to the book <strong>"Reality Unveiled: How Jesus Revealed You Are More Powerful Than You Ever Imagined,"</strong> which it still is. Download your copy at truthbeyondtradition.com to have at your bedside or keep in your car as a handy reference.</p>
+                <p>This chapter was initially written as a separate Guide, a free downloadable companion to this book. Download your copy at truthbeyondtradition.org to have at your bedside or keep in your car as a handy reference.</p>
                 
                 <div style="text-align: center; margin: 2rem 0;">
                     <img src="manifesting-miracles-guide-cover.jpg" 
@@ -422,11 +703,11 @@
 
                 <p>Understanding is incomplete until it becomes <strong>embodiment</strong>. Revelation finds its fullness in <strong>PRACTISE</strong> when truth is <em>not only known, but lived.</em></p>
 
-                <p>This companion guide is your bridge from insight to experience. It translates the principles of <em>Reality Unveiled</em> into a daily path of stillness, alignment, and communion with the <strong>Father, Source Energy, the Field, your Higher Self</strong>—the living Source of all creation.</p>
+                <p>This companion guide is your bridge from insight to experience. It translates the principles of <em>Reality Unveiled</em> into a daily path of stillness, alignment, and communion with the <strong>Father, Source Energy, the Field, your Higher Self</strong>: the living Source of all creation.</p>
 
-                <p>These six steps are <em>not techniques, but invitations</em> to remember what you already are: <strong>INFINITE CONSCIOUSNESS expressing through a human life.</strong> Prayer becomes presence. Desire becomes fulfillment. Life becomes the ongoing revelation of grace.</p>
+                <p>These six steps translate the revelations from previous chapters into <strong>daily practice.</strong> We've established that consciousness exists beyond the brain, that you're more than your physical body, and that reality is far more malleable than materialism suggested. Now comes the <em>embodiment</em>: shifting from <strong>intellectual understanding to lived experience</strong>.</p>
 
-                <p>Enter not as a student collecting knowledge, but as a <strong>soul returning home.</strong> Let the rhythm quiet your mind and awaken your heart. Let the truths you have read become <em>the life you live.</em></p>
+                <p>Enter not as a student collecting knowledge, but as someone ready to <strong>bridge the gap between what you've discovered and how you actually live.</strong> This isn't about learning new information; it's about <em>becoming what you've already recognized as true</em>.</p>
 
                 <p style="text-align: center; font-size: 1.3rem; font-weight: 600; color: var(--primary); margin-top: 2rem;">
                     <em>May your unfolding be:</em><br>
@@ -446,7 +727,7 @@
                     <h2>An important disclaimer...</h2>
                     <p style="color: rgba(0,0,0,0.7); text-align: center;"><em>The essence of true <strong>PRAYER</strong> and <strong>MANIFESTATION</strong></em></p>
                 </div>
-                <p style="font-size: 1.3rem; font-style: italic;"><strong>This is not a Guide of Techniques.</strong> It is a <em>remembrance of who you are</em>—and the <strong>power that moves through you when you become still.</strong></p>
+                <p style="font-size: 1.3rem; font-style: italic;"><strong>This is not a Guide of Techniques.</strong> It is a <em>remembrance of who you are</em>: and the <strong>power that moves through you when you become still.</strong></p>
 
                 <p>You were never meant to <em>strive for blessings.</em> You were created to <strong>reveal them.</strong></p>
 
@@ -454,9 +735,9 @@
 
                 <h3 style="margin-top: 2rem; margin-bottom: 1rem;"><strong>Introduction: The Prayer That Creates Worlds</strong></h3>
 
-                <p>There comes a moment when words no longer satisfy—when declarations feel like <em>echoes in an empty room.</em> You sense a deeper current: <strong>a prayer beyond language, a power beyond effort.</strong></p>
+                <p>There comes a moment when words no longer satisfy: when declarations feel like <em>echoes in an empty room.</em> You sense a deeper current: <strong>a prayer beyond language, a power beyond effort.</strong></p>
 
-                <p>That longing is <strong>remembrance</strong>—the <strong>Father, the Field, your Higher Self</strong>—calling you to the <em>still point where creation begins.</em></p>
+                <p>That longing is <strong>remembrance</strong>: the <strong>Father, the Field, your Higher Self</strong> ... calling you to the <em>still point where creation begins.</em></p>
 
                 <div style="text-align: center; margin: 2rem 0;">
                     <img src="contain-it.jpg" 
@@ -465,7 +746,7 @@
                          style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                 </div>
 
-                <p>This guide is <em>not about getting what you want.</em> It is about awakening to the truth that <strong>you already contain it.</strong> Desires are <em>not demands upon heaven;</em> they are <strong>messages from heaven</strong>—revealing the next expression of your completeness.</p>
+                <p>This guide is <em>not about getting what you want.</em> It is about awakening to the truth that <strong>you already contain it.</strong> Desires are <em>not demands upon heaven;</em> they are <strong>messages from heaven</strong>: revealing the next expression of your completeness.</p>
 
                 <p style="text-align: center; font-size: 1.2rem; margin-top: 2rem;">
                     <strong>YOU ARE CONSCIOUSNESS ITSELF:</strong><br>
@@ -482,39 +763,39 @@
     <section>
         <div class="container">
             <div class="section-header">
-                <h2>Doorways to Remembrance</h2>
-                <p style="text-align: center;"><em>Fundamental principles for <strong>EFFORTLESS MANIFESTATION</strong></em></p>
+                <h2 id="doorways-header">Doorways to Remembrance</h2>
+                <p style="text-align: center; white-space: nowrap; page-break-inside: avoid;"><em>Fundamental principles for <strong>EFFORTLESS MANIFESTATION</strong></em></p>
             </div>
             
             <div class="card-grid">
                 <div class="card">
                     <h3>1. Effortless Prayer</h3>
-                    <p>From <strong><em>striving</em></strong> to <strong><em>knowing</em></strong> — Prayer becomes <strong><em>remembrance</em></strong>—not lack, but <strong><em>fullness.</em></strong> The world is your <strong><em>mirror</em></strong> reflecting your inner state.</p>
+                    <p>From <strong><em>striving</em></strong> to <strong><em>knowing</em></strong>: Prayer becomes <strong><em>remembrance</em></strong> ... not lack, but <strong><em>fullness.</em></strong> The world is your <strong><em>mirror</em></strong> reflecting your inner state.</p>
                 </div>
 
                 <div class="card">
                     <h3>2. Stillness</h3>
-                    <p>The greatest action is <strong><em>rest</em></strong> — Stillness is not weakness—it is <strong><em>authority.</em></strong> When you cease struggling, the river flows.</p>
+                    <p>The greatest action is <strong><em>rest</em></strong>: Stillness is not weakness ... it is <strong><em>authority.</em></strong> When you cease struggling, the river flows.</p>
                 </div>
 
                 <div class="card">
                     <h3>3. Feeling Fulfillment</h3>
-                    <p>The <strong><em>vibration</em></strong> of the answered prayer — Tune into the <strong><em>vibration</em></strong> of answered prayer. What would you <strong><em>feel</em></strong> if your prayer were answered?</p>
+                    <p>The <strong><em>vibration</em></strong> of the answered prayer: Tune into the <strong><em>vibration</em></strong> of answered prayer. What would you <strong><em>feel</em></strong> if your prayer were answered?</p>
                 </div>
 
                 <div class="card">
                     <h3>4. Feeling Without Mind</h3>
-                    <p><strong><em>Presence</em></strong> beyond thought — Transcend thought and enter <strong><em>presence.</em></strong> Manifestation hinges on <strong><em>feeling</em></strong>—the acceptance of desire being fulfilled.</p>
+                    <p><strong><em>Presence</em></strong> beyond thought: Transcend thought and enter <strong><em>presence.</em></strong> Manifestation hinges on <strong><em>feeling</em></strong>: the acceptance of desire being fulfilled.</p>
                 </div>
 
                 <div class="card">
                     <h3>5. Surrender</h3>
-                    <p>Release <strong><em>control</em></strong>, trust <strong><em>divine order</em></strong> — Control is the language of fear; <strong><em>trust</em></strong> is the language of power. Let go of how and when.</p>
+                    <p>Release <strong><em>control</em></strong>, trust <strong><em>divine order</em></strong>: Control is the language of fear; <strong><em>trust</em></strong> is the language of power. Let go of how and when.</p>
                 </div>
 
                 <div class="card">
                     <h3>6. Union</h3>
-                    <p>Live as the <strong><em>consciousness</em></strong> through which blessings flow — Prayer becomes what you are—<strong><em>awareness, presence, being.</em></strong> Every breath is <strong><em>communion.</em></strong></p>
+                    <p>Live as the <strong><em>consciousness</em></strong> through which blessings flow: Prayer becomes what you are: <strong><em>awareness, presence, being.</em></strong> Every breath is <strong><em>communion.</em></strong></p>
                 </div>
             </div>
         </div>
@@ -531,9 +812,9 @@
             <div class="steps">
                 <div class="step">
                     <h3><strong>Step 1: The Secret to Effortless Prayer</strong></h3>
-                    <p>Let's be honest—you may have tried everything. Maybe you've repeated affirmations until your voice went hoarse. Maybe you've visualized your desires so many times you could paint them in your sleep. You've fasted, prayed, begged, and waited. And yet... here you are, still waiting for that breakthrough.</p>
+                    <p>Let's be honest: you may have tried everything. Maybe you've repeated affirmations until your voice went hoarse. Maybe you've visualized your desires so many times you could paint them in your sleep. You've fasted, prayed, begged, and waited. And yet... here you are, still waiting for that breakthrough.</p>
                     
-                    <p>Here's what most people miss: <strong>answered prayer is less about what you do and more about WHO YOU ARE when you pray.</strong> It's not about the <em>technique</em>—it's about <strong>YOUR IDENTITY IN THAT MOMENT.</strong></p>
+                    <p>Here's what most people miss: <strong>answered prayer is less about what you do and more about WHO YOU ARE when you pray.</strong> It's not about the <em>technique</em> ... it's about <strong>YOUR IDENTITY IN THAT MOMENT.</strong></p>
 
                     <div style="text-align: center; margin: 2rem 0;">
                         <img src="identity.jpg" 
@@ -542,11 +823,11 @@
                              style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
-                    <p>Think of it this way: the world around you is like a <strong><em>mirror.</em></strong> It doesn't show you what's "out there"—it shows you what's <strong><em>in here</em></strong>, inside you. Your <strong><em>beliefs</em></strong>, your sense of <strong><em>identity</em></strong>, your <strong><em>emotional atmosphere</em></strong>—all of it gets reflected back to you as your <strong><em>life experience.</em></strong></p>
+                    <p>Think of it this way: the world around you is like a <strong><em>mirror.</em></strong> It doesn't show you what's "out there": it shows you what's <strong><em>in here</em></strong>, inside you. Your <strong><em>beliefs</em></strong>, your sense of <strong><em>identity</em></strong>, your <strong><em>emotional atmosphere</em></strong> ... all of it gets reflected back to you as your <strong><em>life experience.</em></strong></p>
                     
-                    <p>Now here's the game-changer: <strong>You are not a powerless creature kneeling before a distant God, hoping He'll hear you.</strong> That's the old story we've been told. The truth? You are <em>divine awareness wearing a human body.</em> You're a spark of the Infinite itself—what some call the <strong>Father</strong>, others call the <strong>Field</strong>, and still others call your <strong>Higher Self</strong>. Different names, same truth: <strong>you're connected to the creative power of the universe at the deepest level.</strong></p>
+                    <p>In Chapter 7, we established what you <i>are</i>—beyond the physical body, beyond ordinary personality. Now we're addressing what most people get wrong about <strong>how creative power actually works</strong>. Most approach prayer like an <em>external request</em>: you send a message up to heaven and hope the right committee approves it. But that's not how it works.</p>
                     
-                    <p>When you truly understand this—not just intellectually, but in your bones—<strong>everything shifts.</strong> You stop running after blessings like a beggar chasing coins. Instead, you start to recognize that every blessing you could ever want <em>already exists within the infinite Field of possibilities.</em> It's not "out there" waiting to come to you—it's already here, waiting for you to tune into it.</p>
+                    <p>The shift happens when you stop <em>asking from a place of lack</em> and instead recognize that what you desire <strong>already exists as a potential reality</strong> in the Field—not waiting to be created, but waiting to be <em>recognized and aligned with.</em> It's like discovering a radio station that's been broadcasting all along; you just needed to tune to the right frequency.</p>
 
                     <div style="text-align: center; margin: 2rem 0;">
                         <img src="radio2.jpg" 
@@ -558,11 +839,11 @@
                     <p>Prayer stops being about <em>lack</em> (<em>"I don't have this, please give it to me"</em>) and becomes about <em>remembrance</em> (<em>"I remember who I am, and I recognize what's already mine"</em>).</p>
                     
                     <h4 style="font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-top: 2.5rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px;"><strong>THE MIRROR OF BEING</strong></h4>
-                    <p>Here's a simple way to understand how this works: Everything you desire—peace, love, wealth, healing—exists as a <strong>frequency</strong> or vibration. Think of it like a radio station. The music is already broadcasting through the air; you just need to tune your radio to the right frequency to hear it.</p>
+                    <p>Every state of being you can experience—peace, abundance, love, health—already exists as a <strong>vibrational signature</strong> in the Field. Think of these states like songs already recorded, waiting in a vast library. You don't <em>create</em> them through prayer; you <strong>access</strong> them by matching your own vibration.</p>
                     
-                    <p>You don't <em>create</em> the radio station. You don't beg it to exist. You simply <strong>align your inner state with its frequency,</strong> and suddenly, you can hear it. The same goes for your desires. When your inner state—your beliefs, feelings, and sense of self—matches the frequency of what you want, the outer world adjusts to reflect it back to you.</p>
+                    <p>Here's the key: <strong>Your inner state broadcasts itself constantly, like a signal tower.</strong> What you're feeling, believing, and being on the <em>inside</em> sends out a frequency, and the universe can only respond by reflecting back whatever matches that broadcast.</p>
                     
-                    <p>If you want peace but you're constantly anxious inside, you're tuned to the anxiety station. If you want abundance but you feel deeply poor inside, you're tuned to the lack station. <strong>The outer world can only give you what matches your inner frequency.</strong></p>
+                    <p>If your inner broadcast is "I'm anxious, overwhelmed, barely keeping it together," the universe can't deliver peace—you're literally transmitting on a different wavelength. But when you shift your inner state to match the frequency of what you desire, the outer world has no choice but to reflect it back. <strong>It's vibrational physics, not luck or divine favor.</strong></p>
                     
                     <h4 style="font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-top: 2.5rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px;"><strong>THE STILL POINT OF CREATION</strong></h4>
                     <p>Now, you might be thinking: <em>"But I try to feel positive, and it still doesn't work!"</em> Here's the <strong>secret:</strong> it's not about forcing yourself to feel happy or excited. In fact, that desperate excitement is often just another form of <strong><em>lack</em></strong>—it's saying, <em>"I don't have it yet, but maybe if I get excited enough, it'll come!"</em></p>
@@ -982,16 +1263,16 @@
                     <h3><strong>Step 6: Living as Infinite Consciousness — The Prayer That Never Ends</strong></h3>
                     <p><strong>This is it.</strong> This is where everything comes together. This is where prayer stops being something you <em>do</em> and becomes something you <strong><em>ARE.</em></strong></p>
                     
-                    <p>All the previous steps—the stillness, the feeling, the surrender—they've been preparing you for this: <strong><em>Living as INFINITE CONSCIOUSNESS itself.</em></strong> <strong>Not thinking about it. Not trying to achieve it.</strong> Just <strong><em>BEING it.</em></strong></p>
+                    <p>All the previous steps have been training wheels. Now it's time to <strong>ride without them.</strong> You're not <em>practicing</em> prayer anymore. You're not <em>doing</em> any of the techniques. <strong>You've simply <em>become</em> what they pointed toward.</strong> You've shifted from performing the movements to <em>being the movement itself</em>.</p>
                     
-                    <p>In this state, <strong><em>every breath is COMMUNION.</em></strong> <strong>Every moment is SACRED.</strong> You're not waiting for special prayer time or looking for the "right" technique. <strong><em>You ARE the prayer.</em></strong> You are <strong><em>awareness, presence, being</em></strong> in its purest form.</p>
+                    <p>In this state, <strong><em>every breath is communion.</em></strong> You don't need special rituals or sacred spaces or <em>"prayer time."</em> <strong>You ARE the sacred space.</strong> Every conversation, every task, every moment becomes the ongoing dialogue between your individualized awareness and the Field it extends from.</p>
                     
-                    <p>Here's the profound truth: <strong><em>You are the GATE</em></strong>—the meeting point of the seen and unseen, the physical and spiritual, the human and divine. And when you recognize this, when you <strong><em>live</em></strong> from this knowing, <strong><em>the Father's mind and yours are ONE.</em></strong> <strong>There's no separation anymore. There never was.</strong></p>
+                    <p>Here's the profound shift: <strong><em>You stop operating as if you're receiving from an external source.</em></strong> Instead, you recognize yourself as <strong>the junction point where the infinite becomes manifest—</strong>the exact place where Source becomes you, and you become the expression of Source. There's no gap to bridge because there's no separate you trying to reach a separate God.</p>
                     
-                    <h4 style="font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-top: 2.5rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px;"><strong>THE END OF SEPARATION</strong></h4>
+                    <h4 style="font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-top: 2.5rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px;"><strong>THE END OF THE SEPARATION DREAM</strong></h4>
                     <p>For most of your life, you've probably believed in a fundamental division: <strong>"Me here, God there."</strong> You're down here on Earth, small and limited, and God is up there somewhere, distant and separate. That belief—<strong><em>that was the ILLUSION.</em></strong> <strong>That was the dream you've been waking up from.</strong></p>
                     
-                    <p>When you recognize your true nature as <strong><em>infinite consciousness</em></strong>, <strong>that separation dissolves.</strong> Unity isn't something you have to achieve—<strong>it's what you discover was <em>ALWAYS TRUE.</em></strong> The longing you've felt your whole life? <strong>It dissolves.</strong> Because what you were longing for, you <strong><em>ALREADY ARE.</em></strong></p>
+                    <p>Chapter 7 established your true nature; now you're <em>embodying</em> it. That sense of division was always just a story the mind told itself. Reality is simpler: <strong>you're a localized expression of that which is everywhere—</strong>temporarily focused through this specific point of awareness, but never actually <i>separate</i> from it. The longing you've felt your whole life? <strong>It was never for something external. It was the sound of your true self trying to get your attention.</strong></p>
 
                     <div style="text-align: center; margin: 2rem 0;">
                         <img src="One.jpg" 
@@ -1088,9 +1369,9 @@
                     
                     <p><strong><em>Paths prepared BEFORE walked.</em></strong> <strong>Every step you take is on ground that was prepared before you arrived.</strong> The way opens before you because <strong>you're <em>moving WITH</em> the current of life</strong>, not against it.</p>
                     
-                    <p>This isn't about <strong>technique</strong> anymore—<strong>it's about <em>TRANSFORMATION.</em></strong> It's not a <strong>method</strong> you apply—<strong>it's a <em>REMEMBRANCE</em> you embody.</strong> <strong>You're not <em>becoming</em> infinite consciousness. You're <em>RECOGNIZING</em> that you always were.</strong></p>
+                    <p>This isn't about <strong>technique</strong> anymore—<strong>it's about <em>TRANSFORMATION.</em></strong> It's not a <strong>method</strong> you apply—<strong>it's a <em>REMEMBRANCE</em> you embody.</strong> <strong>You're not trying to <em>become</em> something new. You're <em>recognizing</em> what's been true about you all along.</strong></p>
                     
-                    <p><strong>So welcome home, beloved.</strong> <strong><em>Welcome to the truth of who you ARE.</em></strong> <strong>Live as the prayer. Be the answer. Embody the infinite.</strong> And watch as <strong>the universe rushes to meet you</strong>, to reflect back to you the <strong><em>magnificent consciousness</em></strong> that you've always been.</p>
+                    <p><strong>So welcome home, beloved.</strong> <strong><em>Welcome to the truth of who you ARE.</em></strong> <strong>Live as the prayer. Be the answer. Be the ongoing expression of Source itself.</strong> And watch as <strong>the universe rushes to meet you</strong>, to reflect back to you the <strong><em>magnificent reality</em></strong> that you've always been.</p>
                     
                     <p><strong><em>This is the prayer that NEVER ENDS</em></strong>, because it's not a prayer you <em>say</em>—<strong>it's the prayer you <em>ARE.</em></strong></p>
                 </div>
@@ -1131,8 +1412,34 @@
         </div>
     </section>
 
-    <!-- Navigation Buttons -->
+    <!-- Chapter Summary -->
     <section style="background: white; padding: 3rem 0;">
+        <div class="container">
+            <div class="chapter-summary">
+                <div class="chapter-summary-title">
+                    <span>Chapter Summary</span>
+                </div>
+                <div class="chapter-summary-content">
+                    <p><strong>The 6-step prayer manual.</strong> This practical guide transforms all the theory into daily practice. Each step is designed to shift you from ordinary consciousness to divine connection … to actually experience what you've been reading about.</p>
+                    
+                    <p><strong>Step 1 - Stillness.</strong> Empty yourself of the mental chatter and noise. Become like an empty cup that can be filled with pure awareness. No effort … just emptiness that allows.</p>
+                    
+                    <p><strong>Step 2 - Asking from who you are.</strong> Recognize your identity as divine consciousness. Don't beg from lack … speak from your true nature. This is the difference between desperation and declaration.</p>
+                    
+                    <p><strong>Step 3 - Feeling the prayer fulfilled.</strong> Shift from future-tense wanting to present-tense having. Feel the completion now … not someday … now. This isn't imagination … it's creation.</p>
+                    
+                    <p><strong>Step 4 - Feeling without mind.</strong> Drop beneath thought. Let awareness itself carry the prayer … this is pure consciousness operating without the ego. The mind gets quiet … consciousness takes over.</p>
+                    
+                    <p><strong>Step 5 - Surrender.</strong> Release the how and when. Let go of the need to control outcomes. Trust the process. This isn't giving up … it's giving over.</p>
+                    
+                    <p><strong>Step 6 - Union.</strong> The final shift … from "me and God" to just God. You become what you've been seeking all along. The seeker and the sought become one. This is what you've been waiting for.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Buttons -->
+    <section class="no-print" style="background: white; padding: 3rem 0;">
         <div class="container">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 2px solid var(--secondary); padding-top: 2rem;">
                 <a href="part4.html" style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--primary), #E67E22); color: white; text-decoration: none; border-radius: 0.5rem; font-family: 'Inter', sans-serif; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">← Previous: Part 4</a>

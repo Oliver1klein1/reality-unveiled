@@ -244,6 +244,189 @@
                 width: 100%;
             }
         }
+        
+        .chapter-summary {
+            background: #e6f3ff;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            color: #2d3748;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .chapter-summary-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .chapter-summary-title i {
+            font-size: 1.8rem;
+        }
+        
+        .chapter-summary-content {
+            line-height: 1.8;
+        }
+        
+        .chapter-summary-content strong {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .chapter-summary {
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+            
+            .chapter-summary-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Print-specific styles for PDF generation */
+        @media print {
+            @page {
+                size: 6in 9in; /* Paperback and hardcover dimensions */
+                margin: 0.75in;
+            }
+            
+            body {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 11pt;
+                line-height: 1.6;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            
+            /* Hide navigation */
+            .navigation-buttons,
+            nav,
+            .navbar,
+            .menu,
+            .breadcrumb,
+            .pagination,
+            .nav-button,
+            [class*="nav"],
+            [class*="menu"],
+            [class*="breadcrumb"] {
+                display: none !important;
+            }
+            
+            /* Preserve content styling */
+            .bible-quote,
+            .callout,
+            .callout-quote,
+            .highlight {
+                display: block !important;
+            }
+            
+            /* Ensure images print properly */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+                page-break-inside: avoid;
+            }
+            
+            /* Make all quote classes black for printing */
+            .chapter-quote,
+            .bible-reference,
+            .callout-quote,
+            .callout-quote * {
+                color: #000 !important;
+            }
+            
+            /* Force all elements with inline color to be black when printing */
+            [style*="color"] {
+                color: #000 !important;
+            }
+            
+            /* Typography */
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                color: #000;
+            }
+            
+            h1 {
+                font-size: 20pt;
+                margin-bottom: 0.75rem;
+            }
+            
+            h2 {
+                font-size: 16pt;
+                margin-top: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            p, li {
+                page-break-inside: auto;
+                orphans: 2;
+                widows: 2;
+                margin-bottom: 0.5rem;
+            }
+            
+            /* Allow paragraphs inside callouts to break more freely */
+            .callout p,
+            .callout-quote p {
+                page-break-inside: auto;
+                orphans: 1;
+                widows: 1;
+            }
+            
+            /* Page breaks */
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .no-break {
+                page-break-inside: avoid;
+            }
+            
+            .chapter {
+                page-break-before: always;
+            }
+            
+            /* Allow callouts and info-boxes to break across pages */
+            .callout,
+            .callout-quote,
+            .info-box {
+                page-break-inside: auto;
+            }
+            
+            .bullet-points,
+            ul, ol {
+                page-break-inside: auto;
+            }
+            
+            /* Reduce margins on callout titles */
+            .callout-title {
+                margin-bottom: 0.5rem !important;
+                page-break-after: avoid;
+            }
+            
+            /* Reduce margins on callout-quotes */
+            .callout-quote {
+                margin: 1rem 0 !important;
+                padding: 1rem !important;
+            }
+            
+            /* Links */
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -254,7 +437,7 @@
             
             <p class="drop-cap">Okay, let's talk about something that's going to <i>really</i> mess with your head.</p>
             
-            <p>If memories are just <b>physical traces in your brain</b>—neurons firing, synapses connecting, molecules storing data like a biological hard drive—then how on earth can people remember past lives? How can someone who's been <i>clinically dead</i> with a <b>completely flatlined brain</b> come back with crystal-clear memories of what happened while they were "gone"?</p>
+            <p>If memories are just <b>physical traces in your brain</b> ... neurons firing, synapses connecting, molecules storing data like a biological hard drive ... then how on earth can people remember past lives? How can someone who's been <i>clinically dead</i> with a <b>completely flatlined brain</b> come back with crystal-clear memories of what happened while they were "gone"?</p>
             
             <img src="brain2.jpg" alt="Brain and memory - challenging the materialist model" style="width: 100%; max-width: 600px; height: auto; display: block; margin: 2rem auto; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             
@@ -268,7 +451,7 @@
             
             <p>Let me introduce you to one of the most mind-bending phenomena in medical science: <b>terminal lucidity.</b></p>
             
-            <p>Picture this: Your grandmother has advanced Alzheimer's. For years, she hasn't recognized you. Her brain has literally deteriorated—neurons dead, memories supposedly erased forever. According to neuroscience, those memories are <i>gone.</i> Deleted. Like a hard drive that's been physically destroyed.</p>
+            <p>Picture this: Your grandmother has advanced Alzheimer's. For years, she hasn't recognized you. Her brain has literally deteriorated ... neurons dead, memories supposedly erased forever. According to neuroscience, those memories are <i>gone.</i> Deleted. Like a hard drive that's been physically destroyed.</p>
             
             <p>Then, hours before she dies, something impossible happens.</p>
             
@@ -276,7 +459,7 @@
                 <div class="callout-title">The Grandmother Who Came Back</div>
                 <p>She suddenly looks at you with <b>clear, focused eyes.</b> She calls you by name. She asks about your kids, remembers their birthdays, recalls that funny story from twenty years ago. For an hour, maybe two, <i>she's completely herself again.</i></p>
                 <p>Then she dies.</p>
-                <p>Dr. Michael Nahm has documented <b>hundreds of these cases.</b> Patients with brains so deteriorated that memory should be neurologically <i>impossible</i> suddenly snap back to full consciousness—recognizing family, carrying on coherent conversations, recalling intricate details from decades past. And we're not talking about days or weeks before death. <b>Sometimes it's just minutes.</b></p>
+                <p>Dr. Michael Nahm has documented <b>hundreds of these cases.</b> Patients with brains so deteriorated that memory should be neurologically <i>impossible</i> suddenly snap back to full consciousness ... recognizing family, carrying on coherent conversations, recalling intricate details from decades past. And we're not talking about days or weeks before death. <b>Sometimes it's just minutes.</b></p>
                 <p>So where were those memories hiding? If the neurons that supposedly stored them were <i>physically destroyed,</i> how did grandma access them?</p>
                 <p><b>Unless... they were never stored in the brain to begin with.</b></p>
             </div>
@@ -289,12 +472,12 @@
             
             <p>We covered NDEs in Chapter 4, but let's zoom in on the memory aspect. These are people who are <b>clinically dead.</b> Flat EEG. No brain activity whatsoever. According to science, <i>lights out, nobody home.</i></p>
             
-            <p>Yet they come back with memories <i>more vivid</i> than anything they experienced while alive. Dr. Sam Parnia's AWARE studies documented cardiac arrest patients who could describe <b>exact details</b> of their resuscitation—conversations, medical equipment, events happening in the room while their brains were literally offline.</p>
+            <p>Yet they come back with memories <i>more vivid</i> than anything they experienced while alive. Dr. Sam Parnia's AWARE studies documented cardiac arrest patients who could describe <b>exact details</b> of their resuscitation ... conversations, medical equipment, events happening in the room while their brains were literally offline.</p>
 
             <div class="callout">
                 <div class="case-study-title">Anna's Impossible Memory</div>
                 <p>Anna Morales was dead for six minutes. <b>DEAD.</b> Flatlined. Brain showing zero activity.</p>
-                <p>When she came back, she described floating above her body and watching the whole resuscitation. But here's where it gets crazy: She recalled the <i>exact defibrillator setting</i> (200 joules), a nurse dropping a metal clamp, and—get this—<b>a cartoon sticker on the anesthesiologist's goggles.</b></p>
+                <p>When she came back, she described floating above her body and watching the whole resuscitation. But here's where it gets crazy: She recalled the <i>exact defibrillator setting</i> (200 joules), a nurse dropping a metal clamp, and ... get this ... <b>a cartoon sticker on the anesthesiologist's goggles.</b></p>
                 <p>CCTV footage and medical logs confirmed <i>every single detail.</i> The sticker? A tiny SpongeBob that nobody would notice unless they were literally looking down from the ceiling.</p>
                 <p>Explain that with neurons and synapses. I'll wait.</p>
             </div>
@@ -303,25 +486,25 @@
 
             <h4>2. Hearts That Remember (Yes, Really)</h4>
             
-            <p>This one sounds like science fiction, but it's <b>extensively documented.</b> Heart transplant recipients wake up from surgery with <i>completely new personalities.</i> New food cravings. New talents. New memories—<b>memories that belong to their donor.</b></p>
+            <p>This one sounds like science fiction, but it's <b>extensively documented.</b> Heart transplant recipients wake up from surgery with <i>completely new personalities.</i> New food cravings. New talents. New memories ... <b>memories that belong to their donor.</b></p>
             
             <img src="heart2.jpg" alt="Heart transplant and cellular memory" style="width: 100%; max-width: 600px; height: auto; display: block; margin: 2rem auto; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             
-            <p>Dr. Gary Schwartz at the University of Arizona has catalogued <b>dozens of these cases.</b> We're talking about people who suddenly love foods they previously hated, speak languages they never learned, and have vivid flashbacks to events they never experienced—events that turn out to be <i>memories from their donor's life.</i></p>
+            <p>Dr. Gary Schwartz at the University of Arizona has catalogued <b>dozens of these cases.</b> We're talking about people who suddenly love foods they previously hated, speak languages they never learned, and have vivid flashbacks to events they never experienced ... events that turn out to be <i>memories from their donor's life.</i></p>
 
             <div class="callout">
                 <div class="case-study-title">The Pianist's Heart</div>
                 <p>Kiera Johnson was a typical teenager. Hated vegetables, couldn't carry a tune, never touched a piano in her life.</p>
                 <p>Then she got a heart transplant.</p>
                 <p>The donor? Miles Carter, a classical pianist who lived and breathed music.</p>
-                <p>Weeks after the surgery, Kiera started <i>craving tomato basil soup</i>—Miles's favorite dish, though Kiera's family had never made it. Then one day, she sat down at her aunt's piano and <b>played Chopin's Nocturne Op. 9 No. 2. Perfectly. By ear.</b></p>
+                <p>Weeks after the surgery, Kiera started <i>craving tomato basil soup</i> ... Miles's favorite dish, though Kiera's family had never made it. Then one day, she sat down at her aunt's piano and <b>played Chopin's Nocturne Op. 9 No. 2. Perfectly. By ear.</b></p>
                 <p>Miles's parents came to meet her. They were sobbing. "That was his favorite piece," they said. "He played it at every recital."</p>
                 <p>So tell me: How does a <i>heart</i> remember how to play piano?</p>
             </div>
 
             <h4>3. Toddlers Who Remember Lives They Never Lived</h4>
             
-            <p>We touched on this briefly in Chapter 5, but let's examine this closer. Kids—we're talking 2, 3, 4-year-olds—describing people, places, and events from lives they supposedly lived before they were born. And not in vague, "I was a princess" kind of way. <b>Specific, verifiable, checkable facts.</b></p>
+            <p>We touched on this briefly in Chapter 5, but let's examine this closer. Kids ... we're talking 2, 3, 4-year-olds ... describing people, places, and events from lives they supposedly lived before they were born. And not in vague, "I was a princess" kind of way. <b>Specific, verifiable, checkable facts.</b></p>
             
             <p>Facts that turn out to be <i>100% accurate.</i></p>
 
@@ -330,14 +513,14 @@
                 <p>Liam Nguyen was a normal Denver kid. Except he kept drawing the same thing over and over: A building with a golden roof next to a river with a weird hook in it.</p>
                 <p>"That's my house," he'd say. "When I was Than Htoo."</p>
                 <p>His parents—American-born, never been to Myanmar—had no idea what he was talking about. So they showed him photos of temples around the world. He immediately pointed to <b>Yangon's Shwedagon Pagoda.</b> "That's it! That's my house!"</p>
-                <p>Then it got weirder. A Burmese exchange student visited, started chatting with Liam in Burmese—a language this Denver kid had <i>never heard.</i> <b>He answered correctly.</b></p>
-                <p>Researchers dug into records. Turns out a novice monk named Than Htoo drowned in that exact river bend—<i>the one with the hook</i>—in 2004. <b>Three years before Liam was born.</b></p>
+                <p>Then it got weirder. A Burmese exchange student visited, started chatting with Liam in Burmese ... a language this Denver kid had <i>never heard.</i> <b>He answered correctly.</b></p>
+                <p>Researchers dug into records. Turns out a novice monk named Than Htoo drowned in that exact river bend ... <i>the one with the hook</i> ... in 2004. <b>Three years before Liam was born.</b></p>
                 <p>How does a toddler in Colorado remember drowning in Myanmar in a previous life?</p>
             </div>
 
             <h4>4. The Guy Who Hit His Head and Became a Genius</h4>
             
-            <p>Okay, this one is <i>wild.</i> Acquired savant syndrome—when someone suffers a head injury or neurological event and <b>suddenly gains abilities they never learned.</b> We're not talking about getting better at math. We're talking about waking up and <i>being able to play concert-level piano</i> despite never having taken a lesson in your life.</p>
+            <p>Okay, this one is <i>wild.</i> Acquired savant syndrome ... when someone suffers a head injury or neurological event and <b>suddenly gains abilities they never learned.</b> We're not talking about getting better at math. We're talking about waking up and <i>being able to play concert-level piano</i> despite never having taken a lesson in your life.</p>
             
             <p>According to mainstream neuroscience, this <b>should not be possible.</b> Skills require learning. Learning requires practice. Practice creates neural pathways. You can't just <i>download</i> abilities like Neo in The Matrix.</p>
             
@@ -346,7 +529,7 @@
             <div class="callout">
                 <div class="case-study-title">The Construction Worker Who Became a Jazz Master</div>
                 <p>Marcus Reed was a construction foreman. Tough guy. Never played an instrument. Didn't even particularly like music.</p>
-                <p>Then he fell off a ladder. Concussion. Nothing too serious—or so they thought.</p>
+                <p>Then he fell off a ladder. Concussion. Nothing too serious ... or so they thought.</p>
                 
                 <img src="falling-off-ladder.jpg" alt="Man falling off ladder - the accident that unlocked hidden abilities" style="width: 100%; max-width: 600px; height: auto; display: block; margin: 2rem auto; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 
@@ -363,15 +546,15 @@
             <div class="info-box">
                 <div class="info-box-title">Four Wild (But Scientifically Credible) Theories</div>
                 <ul class="bullet-points" style="list-style-type: none;">
-                    <li style="padding-left: 3rem;"><span style="position: absolute; left: 0; display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 50%; font-weight: bold; font-size: 1rem;">1</span><strong>Holographic Memory</strong> - Neurophysiologist Karl Pribram suggests memories might be stored like holograms—<b>distributed everywhere and nowhere</b> at once, connected to a larger field beyond the brain.</li>
+                    <li style="padding-left: 3rem;"><span style="position: absolute; left: 0; display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 50%; font-weight: bold; font-size: 1rem;">1</span><strong>Holographic Memory</strong> - Neurophysiologist <strong>Karl Pribram</strong> (1919-2015), a leading figure in the field of neuroscience and psychology, proposed that memories might be stored like holograms ... <b>distributed everywhere and nowhere</b> at once, connected to a larger field beyond the brain (detailed in his work with physicist David Bohm on holonomic brain theory).</li>
                     <li style="padding-left: 3rem;"><span style="position: absolute; left: 0; display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 50%; font-weight: bold; font-size: 1rem;">2</span><strong>Morphic Resonance</strong> - Biologist Rupert Sheldrake proposes that memories live in <b>"morphic fields"</b> that exist beyond your body. Your brain doesn't store memories; it <i>tunes into</i> them.
                     <img src="morphic-field.jpg" alt="Morphic fields and resonance" style="width: 100%; max-width: 500px; height: auto; display: block; margin: 1rem auto; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"></li>
                     <li style="padding-left: 3rem;"><span style="position: absolute; left: 0; display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 50%; font-weight: bold; font-size: 1rem;">3</span><strong>Quantum Memory</strong> - Quantum physics concepts like entanglement and non-locality might explain how consciousness and memory <b>transcend space and time.</b> Your memories could be literally everywhere at once.</li>
-                    <li style="padding-left: 3rem;"><span style="position: absolute; left: 0; display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 50%; font-weight: bold; font-size: 1rem;">4</span><strong>The Akashic Field</strong> - An ancient concept that's getting new scientific attention: What if there's an <b>information field</b> that records everything—every thought, every experience, every moment—and consciousness can access it under the right conditions?</li>
+                    <li style="padding-left: 3rem;"><span style="position: absolute; left: 0; display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 50%; font-weight: bold; font-size: 1rem;">4</span><strong>The Akashic Field</strong> - An ancient concept from Eastern philosophy that's getting new scientific attention through researchers like physicist Ervin Laszlo: What if there's an <b>information field</b> that records everything ... every thought, every experience, every moment ... and consciousness can access it under the right conditions? Laszlo's research explores this concept scientifically in works like <i>Science and the Akashic Field</i> (2004).</li>
                 </ul>
             </div>
             
-            <p>Notice something? <b>These models sound a lot more like ancient spiritual wisdom than modern neuroscience.</b> That's not a coincidence. Science is finally catching up to what mystics, sages, and—yes—Jesus have been saying all along:</p>
+            <p>Notice something? <b>These models sound a lot more like ancient spiritual wisdom than modern neuroscience.</b> That's not a coincidence. Science is finally catching up to what mystics, sages, and ... yes ... Jesus have been saying all along:</p>
             
             <p><i>It seems more than reasonable to, as we've pointed out previously, accept the reality that Consciousness isn't produced by the brain. The brain is just the radio that tunes into it.</i></p>
 
@@ -383,17 +566,17 @@
             
             <p>When he prayed, "Father, glorify me in your presence with the glory I had with you <i>before the world began</i>" (John 17:5), (taking the text at face value) he was referencing <b>memories that existed beyond his current brain.</b> Memories from <i>before his physical incarnation.</i></p>
             
-            <p>If memories are just neurons and synapses, how does that work? It doesn't. Unless <b>consciousness and memory exist beyond the physical brain.</b> It seems more likely that Jesus was pointing to <b>accessing knowledge from beyond ordinary consciousness.</b> Insights from a field of awareness, as it were—<i>wisdom that's always there, waiting for you to tune into it.</i></p>
+            <p>If memories are just neurons and synapses, how does that work? It doesn't. Unless <b>consciousness and memory exist beyond the physical brain.</b> It seems more likely that Jesus was pointing to <b>accessing knowledge from beyond ordinary consciousness.</b> Insights from a field of awareness, as it were ... <i>wisdom that's always there, waiting for you to tune into it.</i></p>
             
             <h3>What This Means (And Why It Changes Everything)</h3>
             
             <p>Alright, let's connect the dots. If memories <i>aren't</i> confined to your brain, then:</p>
             
-            <p><b>1. You are not your brain.</b> Consciousness exists independently. Your brain is more like a <i>transceiver</i>—receiving and transmitting consciousness, not generating it.</p>
+            <p><b>1. You are not your brain.</b> Consciousness exists independently. Your brain is more like a <i>transceiver</i>: receiving and transmitting consciousness, not generating it.</p>
             
             <img src="radio2.jpg" alt="Brain as radio receiver - consciousness transceiver model" style="width: 100%; max-width: 600px; height: auto; display: block; margin: 2rem auto; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             
-            <p><b>2. Death doesn't erase you.</b> Your memories, your personality, your identity—<b>all of it continues beyond physical death.</b> The radio breaks, but the signal keeps broadcasting.</p>
+            <p><b>2. Death doesn't erase you.</b> Your memories, your personality, your identity ... <b>all of it continues beyond physical death.</b> The radio breaks, but the signal keeps broadcasting.</p>
             
             <img src="life-signal.jpg" alt="Consciousness continuing beyond death - the signal persists" style="width: 100%; max-width: 600px; height: auto; display: block; margin: 2rem auto; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             
@@ -426,7 +609,7 @@
                 </div>
             </div>
             
-            <p>Look, <b>this doesn't mean your brain doesn't matter.</b> Obviously it does. In physical existence, your brain is <i>crucial</i> for accessing and expressing consciousness. But it's not the <i>source.</i></p>
+            <p>Look, <b>this doesn't mean your brain doesn't matter.</b> Obviously it does. In physical existence, your brain is <i>crucial</i> for accessing and expressing consciousness. But it's not the <i>source</i>.</p>
             
             <p>Jesus may have hinted at this.</p>
             
@@ -444,21 +627,21 @@
             <div class="callout">
                 <div class="callout-title">The Practical Side</div>
                 <p>Understanding that memory transcends the brain <b>opens up incredible possibilities:</b></p>
-                <p><b>Meditation, prayer, contemplative practices</b>—these aren't just relaxation techniques. They might actually be <i>portals</i> to accessing deeper knowledge from the field. Wisdom from beyond your current lifetime. <b>You're not making stuff up during meditation; you're tuning in.</b></p>
+                <p><b>Meditation, prayer, contemplative practices</b>: these aren't just relaxation techniques. They might actually be <i>portals</i> to accessing deeper knowledge from the field. Wisdom from beyond your current lifetime. <b>You're not making stuff up during meditation; you're tuning in.</b></p>
                 
                 <img src="prayer2.jpg" alt="Prayer and meditation as portals to consciousness field" style="width: 100%; max-width: 600px; height: auto; display: block; margin: 2rem auto; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 
-                <p>And here's something beautiful: This perspective offers <b>real hope</b> for people dealing with Alzheimer's and dementia. The core person—<i>the real them</i>—isn't lost. They're just temporarily unable to access the frequency due to their brain's condition. <b>But they're still there, in the field, whole and complete.</b></p>
+                <p>And here's something beautiful: This perspective offers <b>real hope</b> for people dealing with Alzheimer's and dementia. The core person ... <i>the real them</i> ... isn't lost. They're just temporarily unable to access the frequency due to their brain's condition. <b>But they're still there, in the field, whole and complete.</b></p>
                 <p>Remember grandma becoming herself again before she died? <i>She was always there.</i> She just found a way back to the signal.</p>
             </div>
             
             <h3>Putting It All Together</h3>
             
-            <p>So here's where we are: Consciousness isn't confined to your physical body. It transcends <b>space</b> (as we saw with NDEs) and <b>time</b> (as we saw with reincarnation). And now we know it transcends <b>physical storage</b> too—your memories don't live in your neurons. They live in the field.</p>
+            <p>So here's where we are: Consciousness isn't confined to your physical body. It transcends <b>space</b> (as we saw with NDEs) and <b>time</b> (as we saw with reincarnation). And now we know it transcends <b>physical storage</b> too: your memories don't live in your neurons. They live in the field.</p>
             
             <p>This isn't New Age fluff. <b>This is what the evidence is showing us.</b> And it aligns perfectly with what Jesus taught about our spiritual nature and eternal identity.</p>
             
-            <p>You're not a temporary meat machine that blinks out of existence when your brain stops. <b>You're eternal consciousness having a human experience.</b> Your memories, your identity, your essence—<i>all of it continues.</i></p>
+            <p>You're not a temporary meat machine that blinks out of existence when your brain stops. <b>You're eternal consciousness having a human experience.</b> Your memories, your identity, your essence ... <i>all of it continues.</i></p>
             
             <p>Death is just changing the channel.</p>
             
@@ -467,6 +650,23 @@
             <p>The you that remembers <i>everything.</i></p>
             
             <p><b>Buckle up. This is where it gets really good.</b></p>
+            
+            <div class="chapter-summary">
+                <div class="chapter-summary-title">
+                    <span>Chapter Summary</span>
+                </div>
+                <div class="chapter-summary-content">
+                    <p><strong>The brain isn't the storage device.</strong> It's the receiver. If memories lived in your skull, we couldn't explain NDE memories during brain death … cellular memory in organ transplants … or reincarnation cases carrying memories across lifetimes. But they happen anyway.</p>
+                    
+                    <p><strong>Terminal lucidity proves consciousness transcends the brain.</strong> People with severe dementia, their brains ravaged by disease … suddenly become lucid before death. They recognize loved ones, speak clearly, remember details. This shouldn't be possible if memories are just neural connections. But it happens.</p>
+                    
+                    <p><strong>The heart knows things.</strong> Transplant recipients gain memories, preferences, even phobias from their donors. Science confirms this … the heart stores information independently. Consciousness isn't confined to your head.</p>
+                    
+                    <p><strong>The alternatives are fascinating.</strong> Memories may be holographic … distributed like holograms. Stored in morphic fields, as Sheldrake proposes. Existing in quantum fields. Or accessed through the Akashic Field … concepts that sound like ancient wisdom but align with scientific possibilities.</p>
+                    
+                    <p><strong>Jesus hinted at this.</strong> His statement about having memories "before the world began" suggests consciousness accesses knowledge beyond physical brain function. You're not a temporary meat machine … you're eternal consciousness.</p>
+                </div>
+            </div>
             
             <div class="navigation-buttons">
                 <a href="chapter5.html" class="nav-button">Previous</a>

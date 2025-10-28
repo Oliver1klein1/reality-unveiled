@@ -1,0 +1,13 @@
+{
+  "name": "reality-unveiled",
+  "version": "1.0.0",
+  "description": "Static server for Reality Unveiled book",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["book", "static", "server"],
+  "author": "Ansilo Boff",
+  "license": "ISC"
+}
