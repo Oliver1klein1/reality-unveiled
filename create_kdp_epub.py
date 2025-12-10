@@ -32,9 +32,11 @@ def fix_spine_order():
         content = f.read()
     
     # Define the correct reading order
-    # Note: "cover" is NOT included in spine - only in guide section
     correct_order = [
+        "cover",
+        "titlepage",
         "copyright",
+        "dedication",
         "toc",
         "introduction",
         "part1",
@@ -81,6 +83,42 @@ def fix_spine_order():
     
     print("✅ Fixed spine order to prevent alphabetical sorting")
 
+
+def apply_kdp_body_class(text_dir):
+    """Add kdp-mode class to body elements to hide navigation in Kindle Previewer."""
+    for xhtml_file in Path(text_dir).glob("*.xhtml"):
+        with open(xhtml_file, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        def replacer(match):
+            full_tag = match.group(0)
+            attrs = match.group(1) or ""
+            class_match = re.search(r'class="([^"]*)"', attrs, flags=re.IGNORECASE)
+
+            if class_match:
+                classes = class_match.group(1).split()
+                if "kdp-mode" not in classes:
+                    classes.append("kdp-mode")
+                new_classes = " ".join(classes)
+                return full_tag.replace(class_match.group(0), f'class="{new_classes}"', 1)
+            return f"<body{attrs} class=\"kdp-mode\">"
+
+        new_content = re.sub(r"<body([^>]*)>", replacer, content, count=1, flags=re.IGNORECASE)
+
+        with open(xhtml_file, "w", encoding="utf-8") as f:
+            f.write(new_content)
+
+
+def build_kdp_workdir():
+    """Copy epub tree to a temp directory and apply KDP-specific tweaks."""
+    temp_root = Path("temp-epub-kdp")
+    if temp_root.exists():
+        shutil.rmtree(temp_root)
+    shutil.copytree("epub", temp_root)
+
+    apply_kdp_body_class(temp_root / "OEBPS" / "Text")
+    return temp_root
+
 def create_kdp_content_opf(metadata):
     """Create content.opf file with complete metadata for Amazon KDP."""
     
@@ -99,18 +137,17 @@ def create_kdp_content_opf(metadata):
     manifest_items = []
     spine_items = []
     
-    # Note: cover.xhtml is NOT included - it causes issues in EPUB readers
-    # The cover image is specified via the <meta name="cover" content="cover-image"/> tag
-    
-    # Add XHTML files to manifest
+    # Add XHTML files to manifest (exclude nav.xhtml from spine - it's navigation only)
     for xhtml_file in sorted(xhtml_files):
         file_id = xhtml_file.stem
         manifest_items.append(f'    <item id="{file_id}" href="Text/{xhtml_file.name}" media-type="application/xhtml+xml"/>')
+
+    # Add nav.xhtml to manifest (but NOT to spine - it's navigation only)
+    manifest_items.insert(0, '    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>')
     
     # Get spine order from fix_spine_order function
-    # Note: "cover" is NOT included in spine - it's only in the guide section
     correct_order = [
-        "copyright", "toc", "introduction",
+        "cover", "titlepage", "copyright", "dedication", "toc", "introduction",
         "part1", "chapter1", "chapter2", 
         "part2", "chapter3",
         "part3", "chapter4", "chapter5",
@@ -118,9 +155,10 @@ def create_kdp_content_opf(metadata):
         "conclusion", "other-books", "appendix", "bibliography"
     ]
     
-    # Add spine items in correct order
+    # Add spine items in correct order (exclude nav - it's navigation only, not content)
     for item_id in correct_order:
-        spine_items.append(f'    <itemref idref="{item_id}"/>')
+        if item_id != "nav":  # Explicitly exclude nav from spine
+            spine_items.append(f'    <itemref idref="{item_id}"/>')
     
     # Add images to manifest
     used_ids = set()  # Track used IDs to prevent duplicates
@@ -188,6 +226,7 @@ def create_kdp_content_opf(metadata):
     
     <guide>
         <reference type="toc" title="Table of Contents" href="Text/toc.xhtml"/>
+        <reference type="nav" title="Navigation" href="nav.xhtml"/>
     </guide>
 </package>'''
     
@@ -212,23 +251,26 @@ def create_kdp_epub(metadata):
     
     # Fix spine order to prevent alphabetical sorting
     fix_spine_order()
+
+    # Prepare KDP-specific working directory with kdp-mode bodies
+    kdp_root = build_kdp_workdir()
     
     # Create EPUB file with proper mimetype ordering
     epub_filename = f"{metadata.get('title', 'Book').replace(' ', '_')}_KDP.epub"
     
     with zipfile.ZipFile(epub_filename, 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as epub:
         # CRITICAL: Add mimetype first (Amazon KDP requirement)
-        epub.write('epub/mimetype', 'mimetype', compress_type=zipfile.ZIP_STORED)
+        epub.write(str(kdp_root / 'mimetype'), 'mimetype', compress_type=zipfile.ZIP_STORED)
         
         # Add META-INF files
-        epub.write('epub/META-INF/container.xml', 'META-INF/container.xml')
+        epub.write(str(kdp_root / 'META-INF' / 'container.xml'), 'META-INF/container.xml')
         
         # Add OEBPS files
-        for root, dirs, files in os.walk('epub/OEBPS'):
+        for root, dirs, files in os.walk(kdp_root / 'OEBPS'):
             for file in files:
-                file_path = os.path.join(root, file)
-                arc_path = os.path.relpath(file_path, 'epub')
-                epub.write(file_path, arc_path)
+                file_path = Path(root) / file
+                arc_path = os.path.relpath(file_path, kdp_root)
+                epub.write(str(file_path), arc_path)
     
     print(f"✅ Amazon KDP-compliant EPUB created: {epub_filename}")
     
@@ -239,7 +281,10 @@ def create_kdp_epub(metadata):
             print("✅ Mimetype file is first (Amazon KDP compliant)")
         else:
             print(f"❌ Warning: Mimetype is not first. First file: {file_list[0]}")
-    
+
+    # Clean up temp directory
+    shutil.rmtree(kdp_root, ignore_errors=True)
+
     return True
 
 def main():

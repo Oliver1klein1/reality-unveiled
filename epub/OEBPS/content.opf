@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package xmlns="http://www.idpf.org/2007/opf" unique-identifier="book-id" version="2.0">
     <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
-        <dc:identifier id="book-id" opf:scheme="UUID">book_20251028_132002</dc:identifier>
+        <dc:identifier id="book-id" opf:scheme="UUID">book_20251210_014837</dc:identifier>
         <dc:title>Reality Unveiled</dc:title>
         <dc:creator opf:file-as="Ansilo Boff" opf:role="aut">Ansilo Boff</dc:creator>
         <dc:publisher>Truth Beyond Tradition</dc:publisher>
         <dc:date opf:event="publication">2025</dc:date>
         <dc:language>en</dc:language>
         <dc:subject>Consciousness, Quantum Physics, Manifestation, Abundance, Transformation, Jesus' Hidden Teachings, Awareness, Oneness, Divinity</dc:subject>
-        <dc:description>Jesus' teachings reveal you are a divine co-creator in a conscious universe, capable of manifesting healing, abundance, and transformation through awakened awareness</dc:description>
+        <dc:description>Reality Unveiled explores Jesus’ most empowering teaching: the Kingdom of God within you. Blending the Gospels, consciousness studies, and modern physics, the book reveals how perception shapes reality and why Jesus’ words “YOU ARE GODS” point to your innate creative power. This is a guide to releasing inherited fear, awakening inner abundance, and discovering your identity as a divine co-creator in a conscious universe.</dc:description>
         <meta name="cover" content="cover-image"/>
         <meta name="generator" content="KDP EPUB Creator"/>
     </metadata>
@@ -16,6 +16,7 @@
     <manifest>
         <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
         <item id="cover-image" href="images/reality-unveiled-cover.jpg" media-type="image/jpeg"/>
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
     <item id="appendix" href="Text/appendix.xhtml" media-type="application/xhtml+xml"/>
     <item id="bibliography" href="Text/bibliography.xhtml" media-type="application/xhtml+xml"/>
     <item id="chapter1" href="Text/chapter1.xhtml" media-type="application/xhtml+xml"/>
@@ -29,21 +30,26 @@
     <item id="chapter9" href="Text/chapter9.xhtml" media-type="application/xhtml+xml"/>
     <item id="conclusion" href="Text/conclusion.xhtml" media-type="application/xhtml+xml"/>
     <item id="copyright" href="Text/copyright.xhtml" media-type="application/xhtml+xml"/>
+    <item id="cover" href="Text/cover.xhtml" media-type="application/xhtml+xml"/>
+    <item id="dedication" href="Text/dedication.xhtml" media-type="application/xhtml+xml"/>
     <item id="introduction" href="Text/introduction.xhtml" media-type="application/xhtml+xml"/>
     <item id="other-books" href="Text/other-books.xhtml" media-type="application/xhtml+xml"/>
     <item id="part1" href="Text/part1.xhtml" media-type="application/xhtml+xml"/>
     <item id="part2" href="Text/part2.xhtml" media-type="application/xhtml+xml"/>
     <item id="part3" href="Text/part3.xhtml" media-type="application/xhtml+xml"/>
     <item id="part4" href="Text/part4.xhtml" media-type="application/xhtml+xml"/>
+    <item id="titlepage" href="Text/titlepage.xhtml" media-type="application/xhtml+xml"/>
     <item id="toc" href="Text/toc.xhtml" media-type="application/xhtml+xml"/>
     <item id="abilities" href="images/abilities.jpg" media-type="image/jpeg"/>
     <item id="abundant-life" href="images/abundant-life.jpg" media-type="image/jpeg"/>
     <item id="accessing-information" href="images/accessing-information.jpg" media-type="image/jpeg"/>
+    <item id="acquired_savant_syndrome" href="images/acquired_savant_syndrome.jpg" media-type="image/jpeg"/>
     <item id="aligned" href="images/aligned.jpg" media-type="image/jpeg"/>
     <item id="all-possible5" href="images/all-possible5.jpg" media-type="image/jpeg"/>
     <item id="all-possible6" href="images/all-possible6.jpg" media-type="image/jpeg"/>
     <item id="alternative-memory-theories" href="images/alternative-memory-theories.jpg" media-type="image/jpeg"/>
     <item id="ansilo" href="images/ansilo.jpg" media-type="image/jpeg"/>
+    <item id="ansilo_boff_logo_final_white_bg" href="images/ansilo_boff_logo_final_white_bg.jpg" media-type="image/jpeg"/>
     <item id="answer" href="images/answer.jpg" media-type="image/jpeg"/>
     <item id="ask-seek-knock" href="images/ask-seek-knock.jpg" media-type="image/jpeg"/>
     <item id="autistc-children" href="images/autistc-children.jpg" media-type="image/jpeg"/>
@@ -56,6 +62,7 @@
     <item id="balloon" href="images/balloon.jpg" media-type="image/jpeg"/>
     <item id="belief-examples" href="images/belief-examples.jpg" media-type="image/jpeg"/>
     <item id="bible-contradictions-cover-final" href="images/bible-contradictions-cover-final.jpg" media-type="image/jpeg"/>
+    <item id="blind-vision" href="images/blind-vision.jpg" media-type="image/jpeg"/>
     <item id="books-clipart" href="images/books-clipart.jpg" media-type="image/jpeg"/>
     <item id="brain-programming" href="images/brain-programming.jpg" media-type="image/jpeg"/>
     <item id="brain" href="images/brain.jpg" media-type="image/jpeg"/>
@@ -66,13 +73,20 @@
     <item id="change-tyre" href="images/change-tyre.jpg" media-type="image/jpeg"/>
     <item id="clock" href="images/clock.jpg" media-type="image/jpeg"/>
     <item id="coincidence" href="images/coincidence.jpg" media-type="image/jpeg"/>
+    <item id="conscioussness-fabric" href="images/conscioussness-fabric.jpg" media-type="image/jpeg"/>
     <item id="contain-it" href="images/contain-it.jpg" media-type="image/jpeg"/>
+    <item id="cytnthia_stafford" href="images/cytnthia_stafford.jpg" media-type="image/jpeg"/>
     <item id="death-nde" href="images/death-nde.jpg" media-type="image/jpeg"/>
+    <item id="dedication_realityunveiled" href="images/dedication_realityunveiled.jpg" media-type="image/jpeg"/>
+    <item id="demolition" href="images/demolition.jpg" media-type="image/jpeg"/>
     <item id="divine-nature" href="images/divine-nature.jpg" media-type="image/jpeg"/>
+    <item id="double-slit-intro" href="images/double-slit-intro.jpg" media-type="image/jpeg"/>
     <item id="double-slit-particles" href="images/double-slit-particles.jpg" media-type="image/jpeg"/>
     <item id="double-slit-waves" href="images/double-slit-waves.jpg" media-type="image/jpeg"/>
     <item id="doubt" href="images/doubt.jpg" media-type="image/jpeg"/>
+    <item id="downgrade" href="images/downgrade.jpg" media-type="image/jpeg"/>
     <item id="dreaming" href="images/dreaming.jpg" media-type="image/jpeg"/>
+    <item id="elijah+johnasdasd" href="images/elijah+johnasdasd.jpg" media-type="image/jpeg"/>
     <item id="emotions-desires" href="images/emotions-desires.jpg" media-type="image/jpeg"/>
     <item id="entanglement" href="images/entanglement.jpg" media-type="image/jpeg"/>
     <item id="entanglement2" href="images/entanglement2.jpg" media-type="image/jpeg"/>
@@ -84,6 +98,7 @@
     <item id="fh-book3-cover" href="images/fh-book3-cover.jpg" media-type="image/jpeg"/>
     <item id="fh-book4-cover" href="images/fh-book4-cover.jpg" media-type="image/jpeg"/>
     <item id="fh-book5-cover" href="images/fh-book5-cover.jpg" media-type="image/jpeg"/>
+    <item id="fh_mockup1112" href="images/fh_mockup1112.jpg" media-type="image/jpeg"/>
     <item id="flowers-and-butterflies" href="images/flowers-and-butterflies.jpg" media-type="image/jpeg"/>
     <item id="framing-jesus-cover-final" href="images/framing-jesus-cover-final.jpg" media-type="image/jpeg"/>
     <item id="frequencies" href="images/frequencies.jpg" media-type="image/jpeg"/>
@@ -94,6 +109,7 @@
     <item id="heart2" href="images/heart2.jpg" media-type="image/jpeg"/>
     <item id="heart3" href="images/heart3.jpg" media-type="image/jpeg"/>
     <item id="hidden-beliefs" href="images/hidden-beliefs.jpg" media-type="image/jpeg"/>
+    <item id="hidden-beliefs_a" href="images/hidden-beliefs_a.jpg" media-type="image/jpeg"/>
     <item id="human-network" href="images/human-network.jpg" media-type="image/jpeg"/>
     <item id="identity" href="images/identity.jpg" media-type="image/jpeg"/>
     <item id="infinite-intel" href="images/infinite-intel.jpg" media-type="image/jpeg"/>
@@ -109,31 +125,45 @@
     <item id="listen" href="images/listen.jpg" media-type="image/jpeg"/>
     <item id="live-in-the-now" href="images/live-in-the-now.jpg" media-type="image/jpeg"/>
     <item id="manifesting-miracles-guide-cover" href="images/manifesting-miracles-guide-cover.jpg" media-type="image/jpeg"/>
+    <item id="mess-with-your-head" href="images/mess-with-your-head.jpg" media-type="image/jpeg"/>
     <item id="morphic-field" href="images/morphic-field.jpg" media-type="image/jpeg"/>
+    <item id="no-fear-of-death" href="images/no-fear-of-death.jpg" media-type="image/jpeg"/>
     <item id="observation-attention" href="images/observation-attention.jpg" media-type="image/jpeg"/>
     <item id="observer_effect" href="images/observer_effect.jpg" media-type="image/jpeg"/>
     <item id="One" href="images/One.jpg" media-type="image/jpeg"/>
     <item id="operating-theatre" href="images/operating-theatre.jpg" media-type="image/jpeg"/>
     <item id="paralytic-roof" href="images/paralytic-roof.jpg" media-type="image/jpeg"/>
     <item id="past-lives" href="images/past-lives.jpg" media-type="image/jpeg"/>
+    <item id="placebo" href="images/placebo.jpg" media-type="image/jpeg"/>
     <item id="prayer2" href="images/prayer2.jpg" media-type="image/jpeg"/>
+    <item id="pre-cognitive-dreams" href="images/pre-cognitive-dreams.jpg" media-type="image/jpeg"/>
     <item id="radical-teachings" href="images/radical-teachings.jpg" media-type="image/jpeg"/>
     <item id="radio2" href="images/radio2.jpg" media-type="image/jpeg"/>
     <item id="reality-creation" href="images/reality-creation.jpg" media-type="image/jpeg"/>
+    <item id="reality-responds" href="images/reality-responds.jpg" media-type="image/jpeg"/>
+    <item id="rediscover_boxed_set_final2" href="images/rediscover_boxed_set_final2.jpg" media-type="image/jpeg"/>
     <item id="release" href="images/release.jpg" media-type="image/jpeg"/>
+    <item id="remote-viewing" href="images/remote-viewing.jpg" media-type="image/jpeg"/>
     <item id="rest-easy" href="images/rest-easy.jpg" media-type="image/jpeg"/>
     <item id="revelation-cover" href="images/revelation-cover.png" media-type="image/png"/>
     <item id="ripple" href="images/ripple.jpg" media-type="image/jpeg"/>
     <item id="ripple3" href="images/ripple3.jpg" media-type="image/jpeg"/>
     <item id="roots-awareness" href="images/roots-awareness.jpg" media-type="image/jpeg"/>
+    <item id="sinner_or_accident" href="images/sinner_or_accident.jpg" media-type="image/jpeg"/>
     <item id="storm-clouds" href="images/storm-clouds.jpg" media-type="image/jpeg"/>
+    <item id="surface-thoughts" href="images/surface-thoughts.jpg" media-type="image/jpeg"/>
     <item id="TBT Publishing" href="images/TBT Publishing.jpg" media-type="image/jpeg"/>
+    <item id="TBT-Publishing" href="images/TBT-Publishing.jpg" media-type="image/jpeg"/>
     <item id="thank-you" href="images/thank-you.jpg" media-type="image/jpeg"/>
     <item id="the-kingdom-within" href="images/the-kingdom-within.jpg" media-type="image/jpeg"/>
     <item id="thoughts3" href="images/thoughts3.jpg" media-type="image/jpeg"/>
+    <item id="time-slip12" href="images/time-slip12.jpg" media-type="image/jpeg"/>
+    <item id="toddler-before" href="images/toddler-before.jpg" media-type="image/jpeg"/>
     <item id="toddler-speaking" href="images/toddler-speaking.jpg" media-type="image/jpeg"/>
+    <item id="transplant-cravings" href="images/transplant-cravings.jpg" media-type="image/jpeg"/>
     <item id="tunnel" href="images/tunnel.jpg" media-type="image/jpeg"/>
     <item id="Unity" href="images/Unity.jpg" media-type="image/jpeg"/>
+    <item id="unspoken-hopes-and-dreams-series-mockup" href="images/unspoken-hopes-and-dreams-series-mockup.jpg" media-type="image/jpeg"/>
     <item id="veils" href="images/veils.jpg" media-type="image/jpeg"/>
     <item id="ways-to-connect" href="images/ways-to-connect.jpg" media-type="image/jpeg"/>
     <item id="weapon" href="images/weapon.jpg" media-type="image/jpeg"/>
@@ -142,7 +172,10 @@
     </manifest>
     
     <spine toc="ncx">
+    <itemref idref="cover"/>
+    <itemref idref="titlepage"/>
     <itemref idref="copyright"/>
+    <itemref idref="dedication"/>
     <itemref idref="toc"/>
     <itemref idref="introduction"/>
     <itemref idref="part1"/>
@@ -166,5 +199,6 @@
     
     <guide>
         <reference type="toc" title="Table of Contents" href="Text/toc.xhtml"/>
+        <reference type="nav" title="Navigation" href="nav.xhtml"/>
     </guide>
 </package>

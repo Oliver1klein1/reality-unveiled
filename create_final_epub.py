@@ -63,7 +63,9 @@ def fix_spine_order():
     # Define the correct reading order
     correct_order = [
         "cover",
+        "titlepage",
         "copyright",
+        "dedication",
         "toc",
         "introduction",
         "part1",

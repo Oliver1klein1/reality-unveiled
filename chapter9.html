@@ -27,10 +27,13 @@
             color: var(--dark);
             background: linear-gradient(135deg, #FAF8F4 0%, #F5F2EB 100%);
             overflow-x: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -204,7 +207,8 @@
         }
 
         .step::before {
-            content: counter(step-counter);
+            content: none;
+            display: none;
             counter-increment: step-counter;
             position: absolute;
             top: -15px;
@@ -299,16 +303,65 @@
 
         /* Image Responsive Styles */
         .contain-it-image {
-            width: 65%;
+            width: 85% !important;
+            max-width: 85% !important;
             height: auto;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
+        
+        /* Exception: emotions-desires.jpg at 100% width */
+        img[src="emotions-desires.jpg"] {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        
+        /* Exception: ansilo.jpg at 30% width */
+        img[src="ansilo.jpg"] {
+            width: 30% !important;
+            max-width: 30% !important;
+        }
+        
+        /* Make all images in chapter 9 default to 85% page width */
+        .step img:not([src="emotions-desires.jpg"]):not([src="ansilo.jpg"]),
+        .card img:not([src="emotions-desires.jpg"]):not([src="ansilo.jpg"]) {
+            width: 85% !important;
+            max-width: 85% !important;
+            height: auto !important;
+        }
+        
+        /* Make inner cards (bordered divs inside cards/steps) much wider */
+        .card > div[style*="border"],
+        .card > div[style*="background"],
+        .step > div[style*="border"],
+        .step > div[style*="background"],
+        .card div[style*="border-left"],
+        .card div[style*="background:"],
+        .step div[style*="border-left"],
+        .step div[style*="background:"] {
+            width: 98% !important;
+            max-width: 98% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+        }
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .contain-it-image {
-                width: 70%;
+            .contain-it-image,
+            .step img:not([src="emotions-desires.jpg"]):not([src="ansilo.jpg"]),
+            .card img:not([src="emotions-desires.jpg"]):not([src="ansilo.jpg"]) {
+                width: 85% !important;
+                max-width: 85% !important;
+            }
+            img[src="emotions-desires.jpg"] {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            img[src="ansilo.jpg"] {
+                width: 30% !important;
+                max-width: 30% !important;
             }
         }
         
@@ -329,14 +382,36 @@
                 padding: 2rem 1.5rem;
             }
 
-            .contain-it-image {
-                width: 85%;
+            .contain-it-image,
+            .step img:not([src="emotions-desires.jpg"]):not([src="ansilo.jpg"]),
+            .card img:not([src="emotions-desires.jpg"]):not([src="ansilo.jpg"]) {
+                width: 85% !important;
+                max-width: 85% !important;
+            }
+            img[src="emotions-desires.jpg"] {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            img[src="ansilo.jpg"] {
+                width: 30% !important;
+                max-width: 30% !important;
             }
         }
         
         @media (max-width: 480px) {
-            .contain-it-image {
-                width: 95%;
+            .contain-it-image,
+            .step img:not([src="emotions-desires.jpg"]):not([src="ansilo.jpg"]),
+            .card img:not([src="emotions-desires.jpg"]):not([src="ansilo.jpg"]) {
+                width: 85% !important;
+                max-width: 85% !important;
+            }
+            img[src="emotions-desires.jpg"] {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            img[src="ansilo.jpg"] {
+                width: 30% !important;
+                max-width: 30% !important;
             }
         }
         /* Chapter Title Styles */
@@ -347,15 +422,28 @@
         
         .chapter-title-card {
             background: linear-gradient(135deg, #1B1F3B 0%, #2C3458 100%);
+            background-color: #1B1F3B; /* Fallback for KDP/Kindle Previewer */
             padding: 2rem;
             text-align: center;
-            color: white;
+            color: white !important;
             border-radius: 15px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             margin: 0 auto;
             page-break-inside: avoid;
             page-break-before: avoid;
             page-break-after: avoid;
+        }
+        
+        /* KDP mode - ensure dark background for chapter title */
+        body.kdp-mode .chapter-title-card {
+            background: #1B1F3B !important;
+            background-color: #1B1F3B !important;
+            color: white !important;
+        }
+        
+        body.kdp-mode .chapter-title-section h1,
+        body.kdp-mode .chapter-title-section .subtitle {
+            color: white !important;
         }
         
         .chapter-title-section h1 {
@@ -637,6 +725,19 @@
                 color: #000 !important;
             }
             
+            /* KDP mode overrides print styles for chapter title */
+            body.kdp-mode .chapter-title-card {
+                background: #1B1F3B !important;
+                background-color: #1B1F3B !important;
+                color: white !important;
+                border: none !important;
+            }
+            
+            body.kdp-mode .chapter-title-section h1,
+            body.kdp-mode .chapter-title-section .subtitle {
+                color: white !important;
+            }
+            
             /* Allow callouts and info-boxes to break across pages */
             .callout,
             .callout-quote,
@@ -675,8 +776,8 @@
     <section class="chapter-title-section">
     <div class="container">
             <div class="chapter-title-card">
-                <h1>Chapter 9</h1>
-                <p class="subtitle">Practical Guide to Manifesting Miracles</p>
+                <h1>Chapter 9: Manifesting Miracles</h1>
+                <p class="subtitle">The 6-Step Prayer Manual</p>
             </div>
         </div>
     </section>
@@ -685,13 +786,7 @@
     <section style="background: white; padding: 2rem 0;">
         <div class="container">
             <div class="card">
-                <p>This chapter was initially written as a separate Guide, a free downloadable companion to this book. Download your copy at truthbeyondtradition.org to have at your bedside or keep in your car as a handy reference.</p>
-                
-                <div style="text-align: center; margin: 2rem 0;">
-                    <img src="manifesting-miracles-guide-cover.jpg" 
-                         alt="Manifesting Miracles Guide Cover" 
-                         style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-                </div>
+                <p>This chapter was initially written as a separate Guide, a free downloadable companion to this book. Download your copy at www.ansiloboff.com to have at your bedside or keep in your car as a handy reference.</p>
                 
                 <p>However I decided to <strong>include it in the book</strong> to marry the book's ideas with their <strong>practical application,</strong> which is built on this <strong>Key Reality:</strong></p>
                 
@@ -700,8 +795,14 @@
                 </div>
 
                 <p><strong>Thought, feeling, and identity</strong> weave the tapestry of your experience. The seen and the unseen are <em>not two realms, but one.</em></p>
+                
+                <div style="text-align: center; margin: 2rem 0;">
+                    <img src="manifesting-miracles-guide-cover.jpg" 
+                         alt="Manifesting Miracles Guide Cover" 
+                         style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                </div>
 
-                <p>Understanding is incomplete until it becomes <strong>embodiment</strong>. Revelation finds its fullness in <strong>PRACTISE</strong> when truth is <em>not only known, but lived.</em></p>
+                <p>Understanding is incomplete until it becomes <strong>embodiment</strong>. Revelation finds its fullness in <strong>PRACTICE</strong> when truth is <em>not only known, but lived.</em></p>
 
                 <p>This companion guide is your bridge from insight to experience. It translates the principles of <em>Reality Unveiled</em> into a daily path of stillness, alignment, and communion with the <strong>Father, Source Energy, the Field, your Higher Self</strong>: the living Source of all creation.</p>
 
@@ -743,7 +844,7 @@
                     <img src="contain-it.jpg" 
                          alt="Contain It" 
                          class="contain-it-image"
-                         style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                         style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                 </div>
 
                 <p>This guide is <em>not about getting what you want.</em> It is about awakening to the truth that <strong>you already contain it.</strong> Desires are <em>not demands upon heaven;</em> they are <strong>messages from heaven</strong>: revealing the next expression of your completeness.</p>
@@ -806,7 +907,6 @@
         <div class="container">
             <div class="section-header">
                 <h2>The 6-Step Pathway</h2>
-                <p style="text-align: center;"><em>From <strong>SEEKING</strong> to <strong>KNOWING</strong>, from <strong>STRIVING</strong> to <strong>RESTING</strong>, from <strong>ASKING</strong> to <strong>BECOMING</strong></em></p>
             </div>
             
             <div class="steps">
@@ -820,7 +920,7 @@
                         <img src="identity.jpg" 
                              alt="Identity" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>Think of it this way: the world around you is like a <strong><em>mirror.</em></strong> It doesn't show you what's "out there": it shows you what's <strong><em>in here</em></strong>, inside you. Your <strong><em>beliefs</em></strong>, your sense of <strong><em>identity</em></strong>, your <strong><em>emotional atmosphere</em></strong> ... all of it gets reflected back to you as your <strong><em>life experience.</em></strong></p>
@@ -833,7 +933,7 @@
                         <img src="radio2.jpg" 
                              alt="Radio Tuning" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>Prayer stops being about <em>lack</em> (<em>"I don't have this, please give it to me"</em>) and becomes about <em>remembrance</em> (<em>"I remember who I am, and I recognize what's already mine"</em>).</p>
@@ -856,7 +956,7 @@
                         <img src="ripple.jpg" 
                              alt="Ripple Effect" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>It's not the excitement of <em>"Oh my God, I'm going to get what I want!"</em> It's the quiet certainty of <strong><em>"It's already done. Nothing is missing. Nothing is broken. Nothing is delayed."</em></strong> That's the <strong>frequency of answered prayer.</strong></p>
@@ -870,7 +970,7 @@
                         <img src="kingdom-within.jpg" 
                              alt="Kingdom Within" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>Reality flows FROM you, not TO you.</strong> It emerges from your state of being. And that state of being becomes clearest when you're <em>still.</em> Think of a glass of muddy water: when you keep stirring it, it stays cloudy. But when you let it sit still, the mud settles, and <strong>the water becomes clear.</strong></p>
@@ -879,7 +979,7 @@
                         <img src="glass.jpg" 
                              alt="Clear Glass" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>That's what happens when you release the struggle and rest in the truth of who you are. The waters of your consciousness become clear, and what was always there—what was always yours—becomes visible.</p>
@@ -895,7 +995,7 @@
                         <img src="rest-easy.jpg" 
                              alt="Rest Easy" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>Here's what most people don't understand: <strong>Stillness is not weakness—it's AUTHORITY.</strong> Think about it: a truly powerful king doesn't run around frantically trying to make things happen. He sits on his throne, speaks a word, and his kingdom moves. The person who's stopped grasping and clinging actually <strong>CONTROLS reality</strong> far more than the one who's desperately trying to manipulate every detail.</p>
@@ -916,7 +1016,7 @@
                         <img src="balloon.jpg" 
                              alt="Helium Balloon" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>Second, don't keep checking on it.</strong> This is where most people <strong><em>mess up.</em></strong> They state their desire, then immediately start <strong><em>panicking:</em></strong> <em>"Is it coming? Where are the signs? Why isn't it here yet?"</em> Every time you do that, you're essentially saying, <em>"I don't really trust this. I don't really believe it's done."</em> You're <strong><em>pulling your seeds out of the ground</em></strong> to see if they're growing.</p>
@@ -939,7 +1039,7 @@
                         <img src="thank-you.jpg" 
                              alt="Thank You" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>2. Enter stillness:</strong> Take a few deep breaths. Let your mind quiet down. Don't fight your thoughts—just let them drift by like clouds. As you breathe, imagine you're expanding the feeling of peace from your chest outward, like ripples in a pond.</p>
@@ -948,7 +1048,7 @@
                         <img src="breathe.jpg" 
                              alt="Breathe" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>3. When doubt shows up (and it will):</strong> Don't fight it. Don't try to shove it down or pretend it's not there. Just observe it gently, like watching a child throw a tantrum. Acknowledge it: <i>"Oh, there's doubt."</i> Then calmly return to your center, to that place of calm certainty.</p>
@@ -957,7 +1057,7 @@
                         <img src="doubt.jpg" 
                              alt="Observing Doubt" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>4. Only act when moved by <strong><em>quiet certainty:</em></strong></strong> Not every action is <strong><em>aligned action.</em></strong> Sometimes we act out of <strong><em>fear</em></strong> or <strong><em>impatience.</em></strong> Learn to recognize the difference between <strong><em>forced action</em></strong> (which feels urgent, strained, anxious) and <strong><em>inspired action</em></strong> (which feels natural, easy, certain). When you feel that <strong><em>quiet inner nudge</em></strong>—<strong><em>that's</em></strong> when you move.</p>
@@ -966,7 +1066,7 @@
                         <img src="aligned.jpg" 
                              alt="Aligned Action" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>5. Stay present and grateful:</strong> Live in <strong><em>this moment</em></strong>, not in the imagined future where your desire shows up. Be genuinely <strong><em>grateful</em></strong> for your life <strong><em>right now</em></strong>—for your breath, for your body, for the people around you, for the simple fact that you're alive. This isn't about <em>pretending</em> everything's perfect; it's about <strong><em>recognizing the goodness that's already here.</em></strong> When you do this, you're <strong><em>vibrating at the frequency of abundance</em></strong>, and more abundance flows to you.</p>
@@ -975,7 +1075,7 @@
                         <img src="live-in-the-now.jpg" 
                              alt="Live in the Now" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>Remember:</strong> You're not trying to <strong><em>make</em></strong> something happen. You're <strong><em>allowing</em></strong> something that's already happened in the <strong><em>invisible realm</em></strong> to become visible in your experience. And that happens through <strong><em>rest</em></strong>, not hustle. Through <strong><em>trust</em></strong>, not control. Through <strong><em>being</em></strong>, not forcing.</p>
@@ -995,7 +1095,7 @@
                         <img src="flowers-and-butterflies.jpg" 
                              alt="Flowers and Butterflies" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <h4 style="font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-top: 2.5rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px;"><strong>DESIRE AS DIVINE GUIDANCE</strong></h4>
@@ -1009,7 +1109,7 @@
                         <img src="lambo.jpg" 
                              alt="Lamborghini" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>Believe it or not, <strong>you're probably not obsessed with the metal or the badge.</strong> At a level <strong><em>below your conscious mind</em></strong>, you're chasing the <strong><em>feeling it promises:</em></strong> It may be <strong><em>Freedom</em></strong> (the thrill of moving without limits, windows down, world wide open). Or it could be a level of <strong><em>Pride</em></strong>—that quiet, satisfied <em>"I've arrived"</em> energy. Or maybe it's the <strong><em>Power</em></strong> it represents, the sense that <strong>you're steering not just a car, but your own destiny.</strong></p>
@@ -1022,7 +1122,7 @@
                         <img src="emotions-desires.jpg" 
                              alt="Emotions and Desires" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 100%; max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p style="text-align: center; font-size: 1.25rem; margin: 2rem 0; font-weight: 600; color: var(--primary);">In the end, the car isn't the prize. <strong>You are.</strong></p>
@@ -1046,7 +1146,7 @@
                         <img src="breathe.jpg" 
                              alt="Breathe" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>2. From that place, feel quiet gratitude.</strong> Not the frantic "please please please" kind of gratitude. Not the desperate "I hope this works" energy. But the calm, settled gratitude of someone who's already received what they asked for. Whisper to yourself, to the Father, to the universe: <strong>"Thank You, Father. It is finished."</strong> Past tense. Done. Complete.</p>
@@ -1055,7 +1155,7 @@
                         <img src="thank-you.jpg" 
                              alt="Thank You" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>3. Carry that <em>certainty</em> with you throughout your day.</strong> This is the part where <strong>most people drop the ball.</strong> They do their visualization or their meditation, feel great for a few minutes, then go right back to worrying, doubting, and feeling the lack. <strong><em>Don't do that.</em></strong> When you finish your practice, <strong>take that feeling with you.</strong> Let it <strong><em>color how you move through the world.</em></strong> When doubt creeps in (and it will), <strong>gently return</strong> to that felt sense of completion. <strong>"It's already done. I've already received it. I'm just waiting for it to catch up in the physical."</strong></p>
@@ -1071,7 +1171,7 @@
                         <img src="thoughts3.jpg" 
                              alt="Beyond Thought" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>Your mind can <em>imagine</em> what you want. It can visualize, plan, and strategize. But here's the truth: <strong>the power that actually shapes reality flows from a deeper place.</strong> It flows from <strong>awareness itself</strong>—that silent, still presence beneath all your thoughts.</p>
@@ -1091,7 +1191,7 @@
                         <img src="roots-awareness.jpg" 
                              alt="Roots of Awareness" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <h4 style="font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-top: 2.5rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px;"><strong>STEPPING BEYOND THE MIND</strong></h4>
@@ -1112,7 +1212,7 @@
                         <img src="storm-clouds.jpg" 
                              alt="Storm Clouds" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>Instead, try this: <strong>Close your eyes.</strong> Don't think about <em>how</em> the weather will change or <em>what</em> needs to happen. Just feel gratitude for <strong>perfection already unfolded.</strong> Feel it in your body—the warmth of the sun, the calm of the air, the success of your event. <em>Release all analysis.</em> Rest in complete satisfaction, as if you're looking back on it after it already went perfectly.</p>
@@ -1144,7 +1244,7 @@
                         <img src="clock.jpg" 
                              alt="Eternal Now" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>When you're truly <strong><em>present</em></strong>—not lost in thoughts about the past or worries about the future—<strong>something shifts.</strong> Manifestation stops being something you're <strong>trying to make happen</strong> and becomes something you're <strong><em>RECOGNIZING as ALREADY COMPLETE.</em></strong></p>
@@ -1166,7 +1266,7 @@
                         <img src="let-go-let-god.jpg" 
                              alt="Let Go Let God" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>But trust? <strong><em>Trust is the soul's language of POWER.</em></strong> When you truly trust, you <strong>release the how, the when, and the through whom.</strong> You partner with <strong><em>a wiser order</em></strong>—something <strong>infinitely more intelligent</strong> than your ego-mind. You <strong>align yourself with the <em>end result</em></strong> and then <strong>let the path reveal itself.</strong></p>
@@ -1180,7 +1280,7 @@
                         <img src="ripple3.jpg" 
                              alt="Ripple Effect" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>When you <strong><em>release</em></strong> your grip—when you <strong>stop trying to force and control</strong>—<strong>the surface of the water softens.</strong> It becomes still again. And in that stillness, <strong><em>the image of your desire can finally APPEAR</em></strong> clearly, without distortion.</p>
@@ -1196,7 +1296,7 @@
                         <img src="coincidence.jpg" 
                              alt="Synchronicity and Coincidence" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>And the best part? <strong><em>You become CARRIED, not strained.</em></strong> You're no longer <strong>exhausting yourself</strong> trying to make things happen through sheer willpower. Instead, you're being <strong><em>guided, supported, moved along</em></strong> by a current much stronger than your individual effort. <strong>You're working <em>WITH</em> the universe, not against it.</strong></p>
@@ -1212,7 +1312,7 @@
                         <img src="heart3.jpg" 
                              alt="Heart Expansion" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>You <em>radiate certainty.</em></strong> Not the anxious, white-knuckled <em>"I have to make this happen"</em> energy, but a <strong>calm, settled <em>"It's already handled"</em> presence.</strong></p>
@@ -1230,7 +1330,7 @@
                         <img src="release.jpg" 
                              alt="Release and Let Go" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>3. Return to peace when anxiety arises:</strong> Because it will. Your ego-mind is going to freak out. It's going to say, <em>"But we need a plan! What if it doesn't work out? What if we miss our chance?"</em> When <strong><em>anxiety shows up</em></strong>, <strong>don't fight it.</strong> Just <strong>gently return to your center.</strong> Take a deep breath. Come back to that place of trust. Remind yourself: <strong><em>"It's handled. I don't need to know how. I just need to stay aligned."</em></strong></p>
@@ -1239,7 +1339,7 @@
                         <img src="breathe.jpg" 
                              alt="Breathe" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>4. Follow quiet promptings, not frantic plans:</strong> There's a <strong>huge difference</strong> between <strong><em>inspired action</em></strong> and <strong><em>desperate action.</em></strong> Inspired action feels <strong><em>effortless, unurgent, clear.</em></strong> It's a <strong>gentle nudge</strong>, a <strong>quiet knowing:</strong> <em>"Call that person. Take that route. Look into that opportunity."</em> Desperate action feels <strong>forced, strained, anxious.</strong> Learn to recognize the difference, and <strong>only move when you feel that gentle, certain pull.</strong></p>
@@ -1248,7 +1348,7 @@
                         <img src="aligned.jpg" 
                              alt="Aligned Action" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <h4 style="font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-top: 2.5rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px;"><strong>THE BEAUTY OF THE UNSEEN PATH</strong></h4>
@@ -1278,7 +1378,7 @@
                         <img src="One.jpg" 
                              alt="Oneness" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>Think about this: <strong><em>The consciousness that dreamed galaxies into existence dreams through YOU.</em></strong> The same creative power that spun stars and planets into being is <strong><em>the very awareness</em></strong> looking through your eyes right now. <strong>You're not separate from that power—<em>you ARE that power</em></strong>, individualized, expressed, made manifest.</p>
@@ -1296,7 +1396,7 @@
                         <img src="abundant-life.jpg" 
                              alt="Abundant Life" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p>And then something beautiful happens: <strong><em>Creation blossoms by RESONANCE.</em></strong> <strong>You're not forcing anything. You're not hustling or grinding.</strong> You're simply being a particular <strong><em>quality of consciousness</em></strong>, and <strong>reality naturally organizes itself to match.</strong> <strong><em>Like attracts like.</em></strong> <strong>The Field reflects what you embody.</strong></p>
@@ -1310,7 +1410,7 @@
                         <img src="identity.jpg" 
                              alt="Identity" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>2. Move as consciousness, not personality.</strong> Throughout your day, remember: <strong>You're not your ego, your past, your story, your fears, your limitations.</strong> Those are just temporary experiences passing through <strong><em>consciousness.</em></strong> <strong><em>You ARE the consciousness itself.</em></strong> When you remember this, <strong>you stop taking everything so personally.</strong> You stop being tossed around by circumstances. <strong>You move through life with a kind of <em>unshakable PRESENCE.</em></strong></p>
@@ -1321,7 +1421,7 @@
                         <img src="listen.jpg" 
                              alt="Listen" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>4. Receive all as answer—return to alignment through every event.</strong> Here's a radical idea: <strong><em>EVERYTHING that happens is an ANSWER.</em></strong> Every event, every person, every circumstance is <strong>the Field responding to you</strong>, showing you something, guiding you. <strong>Even the challenging stuff. <em>Especially</em> the challenging stuff.</strong> So instead of resisting or complaining, ask: <strong><em>"What is this showing me? How is this guiding me back to alignment?"</em></strong> <strong>Use <em>everything</em> as a doorway back to your center.</strong></p>
@@ -1330,7 +1430,7 @@
                         <img src="answer.jpg" 
                              alt="Everything is an Answer" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <p><strong>5. End in gratitude—the prayer was never separate from you.</strong> At the end of each day, recognize the truth: <strong><em>The prayer was NEVER separate from you.</em></strong> You weren't begging an external God for favors. <strong>You were aligning with your own <em>infinite nature.</em></strong> The gratitude you feel isn't for getting stuff—<strong>it's for <em>REMEMBERING WHO YOU ARE.</em></strong> And that's the greatest gift of all.</p>
@@ -1339,7 +1439,7 @@
                         <img src="thank-you.jpg" 
                              alt="Thank You" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                     </div>
                     
                     <h4 style="font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-top: 2.5rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px;"><strong>THE FRUIT OF ONENESS</strong></h4>
@@ -1357,7 +1457,7 @@
                         <img src="fruits.jpg" 
                              alt="Fruits of Oneness" 
                              class="contain-it-image"
-                             style="width: 65%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                             style="width: 85%; max-width: 85%; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
             </div>
             
                     <p><strong><em>Abundance, love, health, joy</em></strong>—all of these become <strong>natural expressions of your life.</strong> Not because you forced them or worked hard for them, but because <strong>they're simply reflections of the consciousness you carry.</strong> <strong>You are abundant awareness, so abundance flows. You are love itself, so love surrounds you. You are wholeness, so health is your natural state.</strong></p>
@@ -1406,7 +1506,7 @@
                 <div style="text-align: center; margin: 1rem 0;">
                     <img src="ansilo.jpg" 
                          alt="Ansilo" 
-                         style="max-width: 300px; height: auto;">
+                         style="width: 30%; max-width: 30%; height: auto;">
                 </div>
             </div>
         </div>

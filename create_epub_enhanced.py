@@ -76,6 +76,13 @@ def convert_html_to_xhtml_enhanced(html_file_path, output_dir):
             # Update to proper EPUB image path
             img['src'] = f"../images/{os.path.basename(src)}"
     
+    # Update internal links from .html to .xhtml for EPUB compatibility
+    for link in body.find_all('a', href=True):
+        href = link.get('href', '')
+        # Only update links that point to .html files (internal links)
+        if href.endswith('.html') and not href.startswith('http'):
+            link['href'] = href.replace('.html', '.xhtml')
+    
     # Extract any inline styles from the original HTML
     style_content = ""
     style_tag = soup.find('style')
@@ -135,6 +142,21 @@ def verify_html_xhtml_match(html_file, xhtml_file):
     
     # Check for key elements and classes
     issues = []
+
+    def remove_navigation_elements(body_tag):
+        """Strip navigation-related elements so counts align with EPUB output."""
+        for selector in [
+            ('div', 'navigation'),
+            ('a', 'nav-link'),
+            ('div', 'navigation-buttons'),
+            ('section', 'no-print'),
+        ]:
+            for elem in body_tag.find_all(selector[0], class_=lambda x: x and selector[1] in x):
+                elem.decompose()
+
+    # Remove navigation elements from HTML body to mirror EPUB cleanup
+    remove_navigation_elements(html_body)
+    remove_navigation_elements(xhtml_body)
     
     # Check for bible-quote classes
     html_quotes = html_body.find_all('div', class_='bible-quote')
@@ -228,9 +250,12 @@ def main():
     
     # Files to process (in order)
     files_to_process = [
+        "cover.html",
+        "titlepage.html",
         "copyright.html",
-        "introduction.html",
+        "dedication.html",
         "toc.html",
+        "introduction.html",
         "part1.html",
         "chapter1.html", "chapter2.html",
         "part2.html",
